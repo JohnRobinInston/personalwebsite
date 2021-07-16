@@ -3,7 +3,7 @@ action_label: Read More &rarr;
 action_link: /about
 action_type: text
 description: 
-  **Hello -** <br>
+  Hello - <br>
   <br>
   My name is John.  I am a financial mathematician, statistician and data scientist.  <br>
   <br>
