@@ -3,8 +3,7 @@ action_label: Read More &rarr;
 action_link: /about
 action_type: text
 description: 
-  Hello - <br> 
-  <br>
+  ### Hello - 
   My name is John.  I am a financial mathematician, statistician and data scientist.  <br>
   <br>
   On this site you will find a library of everything I make, write or feel compelled to share on the internet.  <br>
