@@ -3,10 +3,9 @@
 text_align_right: false
 show_title_as_headline: false
 headline: |
-  Hi, my name is Hugo Apéro. Nice to meet you.
+  John Robin Inston
 ---
 
-<!-- this is a subheadline -->
-I'm a Hugo theme you'll want to hang out with. :fr: 
+I'm a quantitative analyst and data scientist from Manchester England.  I am currently completing my master's degree in quantitative finance at Lancaster University, England.  I am passionate about technology, science, nature and music.
 
-The page you are reading is based on a markdown file- look in `content/about/` to edit. There, look inside the `header`, `main`, and `sidebar` folders to get started building your own "about" page.
+
