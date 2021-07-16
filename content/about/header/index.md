@@ -6,6 +6,6 @@ headline: |
   John Robin Inston
 ---
 
-I'm a quantitative analyst and data scientist from Manchester England.  I am currently completing my master's degree in quantitative finance at Lancaster University, England.  I am passionate about technology, science, nature and music. Mark smells.
+I'm a quantitative analyst and data scientist from Manchester England.  I am currently completing my master's degree in quantitative finance at Lancaster University, England.  I am passionate about technology, science, nature and music.
 
 
