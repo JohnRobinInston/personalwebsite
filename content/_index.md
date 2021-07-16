@@ -12,7 +12,7 @@ description:
   Please feel to get in touch with me at any time.
 image_left: true
 images:
-- img/ProfilePic.jpg
+- img/ProfilePic.png
 show_action_link: true
 show_social_links: true
 subtitle: Quantitative Analyst and Data Scientist.
