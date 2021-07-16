@@ -28,7 +28,7 @@ title: Resume
 *Advanced Topics in Investment Strategies, Mutual Funds and Hedge Funds - 
 Machine Learning and Predicting Mutual Fund Failure:  Neural Network, Liquidity and Fire Sales.*
 
-##### Topics studied - 
+**Topics studied -** 
 
 1. Financial Econometrics
 2. Derivatives Pricing
@@ -41,7 +41,7 @@ Machine Learning and Predicting Mutual Fund Failure:  Neural Network, Liquidity 
 9. Financial Markets
 10. Spreadsheet Modelling
 
-##### Topics audited - 
+**Topics audited -**
 
 1. Python programming
 2. Data mining
@@ -49,7 +49,7 @@ Machine Learning and Predicting Mutual Fund Failure:  Neural Network, Liquidity 
 ## BSc Mathematics with Statistics - Lancaster University
 ### Result: First Class Honours
 
-##### Topics studied - 
+**Topics studied -**
 
 1. Time Series Analysis
 2. Statistical Models
