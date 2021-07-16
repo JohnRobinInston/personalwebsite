@@ -14,6 +14,7 @@ tags:
 - hugo-site
 title: Resume
 sidebar:
+    title: Resume Sidebar
     author: Alison Hill
     description: "Sometimes you want a souped-up series- a bundle of related pages
       \nmeant to be read in sequence. This section is like a blog series, \nminus
