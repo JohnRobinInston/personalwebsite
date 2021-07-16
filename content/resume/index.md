@@ -21,7 +21,10 @@ title: Resume
 
 ---
 
-# EDUCATION
+## Education
+
+### MSc Quantitative Finance - Lancaster University
+**Expected Result: Distinction**
 
 Building this static site generator theme was the first time I used an Atomic
 (or Functional) CSS system like Tachyons. It's a design system that provides
