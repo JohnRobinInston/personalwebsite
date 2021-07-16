@@ -21,7 +21,7 @@ title: Resume
 
 ---
 
-### Because Speed
+# EDUCATION
 
 Building this static site generator theme was the first time I used an Atomic
 (or Functional) CSS system like Tachyons. It's a design system that provides
