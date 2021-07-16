@@ -6,13 +6,9 @@ use_featured: false # if false, use most recent by date
 number_categories: 3 # set to zero to exclude
 show_intro: true
 intro: |
+  Apéro is a unique kind of casual get-together in French culture, when you gather with friends and get to know each other better over some apéritifs, snacks, and anything in between. A good apéro is one where you'd happily spend a few hours just hanging out.
   
-#Heading
-  
-  My name is John and I am a mathematician, statistician and data scientist from Manchester, England.  I am currently pursuing a career as a quantitative analyst in the asset management sector.  I have a bachelors degree in Mathematics and Statistics from Lancaster University and I am currently studying a masters Quantitative Finance degree at Lancaster University and am on track for obtaining a distinction level result.  
-  
-I spend most of my time coding or working with data and I have excellent knowledge of the R, Python, MATLAB and SAS coding languages and have used all 4 to analyse financial time series.  Outside of work I have a passion for technology, youtube, photography and music.  I tutor mathematics online and have recently begun writing and filming videos about science on my youtube channel.
-  
+  I hope this theme helps you create your own virtual apéro. A place where you and your site's visitors enjoy spending time, and one that helps folks get to know you better. 
 show_outro: true
 outro: |
   <i class="fas fa-glass-cheers pr2"></i>Sincere thanks to [Maëlle Salmon](https://masalmon.eu/) for her help naming this Hugo theme!
