@@ -2,17 +2,19 @@
 action_label: Read More &rarr;
 action_link: /about
 action_type: text
-description: Thanks for visiting my website, I hope you enjoy your visit.  My name is John and I am a financial mathematician and data scientist from Manchester, UK.  
-
-On this site you will find absolutely everything I make, write or feel the need to share on the internet.  My ultimate goal is that one day something I make will be useful to somebody.
+description: Sit down, relax, and get to know Hugo Apéro. Built on top of Blogophonic,
+  we wanted to create a polished Hugo theme with the right features for a true personal
+  website. We set out to create a theme that is a pleasure to learn, and one that
+  helps others get to know you better. It is more than a blog, with flexible custom
+  layouts that help you introduce yourself online.
 image_left: true
 images:
 - img/revoir.jpg
 show_action_link: true
 show_social_links: true
-subtitle: Quantitative Analyst & Data Scientist.
+subtitle: A Hugo theme you'll want to hang out with
 text_align_left: false
-title: John Robin Inston
+title: Hugo Apéro
 type: home
 ---
 
