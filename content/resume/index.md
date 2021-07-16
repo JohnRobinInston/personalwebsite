@@ -23,7 +23,7 @@ title: Resume
 ## MSc Quantitative Finance - Lancaster University
 ### Expected Result: Distinction
 
-##### Dissertation topic - 
+**Dissertation topic -**
 
 *Advanced Topics in Investment Strategies, Mutual Funds and Hedge Funds - 
 Machine Learning and Predicting Mutual Fund Failure:  Neural Network, Liquidity and Fire Sales.*
@@ -63,3 +63,9 @@ Machine Learning and Predicting Mutual Fund Failure:  Neural Network, Liquidity 
 ---
 
 # Projects
+
+
+
+
+
+
