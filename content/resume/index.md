@@ -78,7 +78,15 @@ Machine Learning and Predicting Mutual Fund Failure:  Neural Network, Liquidity 
 
 # Projects
 
+### 1.  Implementing the Black-Scholes and Vasiciek Models to calculate prices of European call options.
 
+A project investigating 
+
+```{r, echo=FALSE, include=TRUE}
+a = c(1:10)
+b=2*c(1:10)
+plot(a,b)
+```
 
 
 
