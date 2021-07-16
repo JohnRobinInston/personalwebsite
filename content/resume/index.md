@@ -78,15 +78,21 @@ Machine Learning and Predicting Mutual Fund Failure:  Neural Network, Liquidity 
 
 # Projects
 
-### 1.  Implementing the Black-Scholes and Vasiciek Models to calculate prices of European call options.
+### 1.  Implementing Black-Scholes and Vasiciek Models
 
-A project investigating 
+For this project we implement the Black-Scholes and Vasiciek models in order to determine the price of both European call options on stock and the price of bonds.
+ 
+### 2.  Calculating Value-at-Risk using GARCH models.
 
-```{r, echo=FALSE, include=TRUE}
-a = c(1:10)
-b=2*c(1:10)
-plot(a,b)
-```
+For this project we calculate the Value-at-Risk (VaR) of FTSE100 time series data using fitted Generalised Autoregressive Conditional Heteroscedasticity Models.
+
+### 3. High-Frequency Stock Trade-Quote Data Analysis.
+
+For this group project we analyse the tick-by-tick and open-to-close log returns of a stock and find the best model in the ARMA-GARCH modelling framework.  We then construct a volatility signature plot with daily realised volatility estimator and compute the rolling window, one-step-ahead volatility forecast with the ARMA-GARCH models and a HAR-RV specification.
+
+### 4. Value-at-Risk Forecasting and Backtesting.
+
+For this project we calculate the daily 5% Value-at-Risk (VaR) of the Dow Jones Industrial Average over a period of 7 years.  We then perform backtesting to compare our risk models, checking periods of high volatility as well as checking coverage and independence.
 
 
 
