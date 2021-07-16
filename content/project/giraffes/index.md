@@ -1,20 +1,19 @@
 ---
-author: Eric Anderson
+author: John Inston
 categories:
-- Theme Features
+- Quantitative Analysis
 - R
-- package
+- Stochastic Processes
 date: "2019-07-03"
 draft: false
-excerpt: Building this static site generator theme was the first time I used an Atomic
-  (or Functional) CSS system like Tachyons. It’s a design system that provides very
-  small (which means fast) CSS modules that you can use in your HTML.
+excerpt: In this project I implement the Black-Scholes model to determine the price of European call options on stock.  I then implement the Vasiciek model to determine the price of bonds.
+ 
+I discuss the benefits and drawbacks of each model before conducting my investigation and discussing my findings.
 layout: single
-subtitle: A tachyon /ˈtæki.ɒn/ or tachyonic particle is a hypothetical particle that
-  always moves faster than light.
+subtitle: 
 tags:
 - hugo-site
-title: Tachyons for Style
+title: Implementing the Black-Scholes and Vasiciek models to determine the price of European call options.
 ---
 
 ![Tachyons Logo Script](tachyons-logo-script.png)
