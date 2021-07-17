@@ -12,6 +12,10 @@ intro: |
   
   <br>
   
+---
+  
+  <br>
+  
   ## Resume
   
   For a comprehensive summary of my academic and professional background you can find my resume here.
