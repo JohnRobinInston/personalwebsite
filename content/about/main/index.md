@@ -10,11 +10,11 @@ intro: |
   
   My plans going forward are to continue to develop my skills as a quantitative analysts.  I aim to continue my research into the applications of machine learning techniques in investment management by pursuing PhD study in North America.
 
-<hr/>
+<br>
   
   ## Resume
   
-  For a comprehensive summary of my academic and professional background you can find my resume here.
+  For a comprehensive summary of my academic and professional background you can find my ####[resume](https://www.johnrobininston.com/resume/) here.
   
   
 ---  
