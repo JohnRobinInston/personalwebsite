@@ -10,7 +10,7 @@ intro: |
   
   My plans going forward are to continue to develop my skills as a quantitative analysts.  I aim to continue my research into the applications of machine learning techniques in investment management by pursuing PhD study in North America.
 
----
+<hr/>
   
   ## Resume
   
