@@ -10,8 +10,5 @@ I'm a postgraduate student originally from Manchester, England.  I studied my ba
 
 ---
 
-# Resume
-
-For a comprehensive summary of my academic and professional background you can find my [resume](https://github.com/JohnRobinInston/personalwebsite/tree/main/content/resume) here.
 
 
