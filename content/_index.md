@@ -5,7 +5,7 @@ action_type: text
 description: 
   Hello - <br>
   <br>
-  I am a quantitative analyst, applied mathematician and data scientist from the United Kingdom.  I am currently working towards my masters degree in Quantitative Finance at Lancaster University. <br>
+  I am a quantitative analyst, applied mathematician and data scientist from the United Kingdom.  I am currently studying towards my masters degree in Quantitative Finance at Lancaster University. <br>
   <br>
   On this site you will find a library of everything I make, write or feel compelled to share on the internet that is related to maths, finance or data science.
 image_left: true
