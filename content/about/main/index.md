@@ -14,7 +14,7 @@ intro: |
   
   ## Resume
   
-  For a comprehensive summary of my academic and professional background you can find my ####[resume](https://www.johnrobininston.com/resume/) here.
+  For a comprehensive summary of my academic and professional background you can find my [resume](https://www.johnrobininston.com/resume/) here.
   
   
 ---  
