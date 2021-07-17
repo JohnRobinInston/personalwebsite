@@ -16,12 +16,6 @@ intro: |
   
   For a comprehensive summary of my academic and professional background you can find my resume here.
   
----  
-  
-## Resume
-
-For a comprehensive summary of my academic and professional background you can find my [resume](https://www.johnrobininston.com/resume/) here.
-
 show_outro: true
 outro: |
   <i class="fas fa-glass-cheers pr2"></i>Thank you for taking the time to read about me!
