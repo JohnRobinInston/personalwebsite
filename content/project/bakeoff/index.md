@@ -25,7 +25,7 @@ tags:
 title: Pricing call options and bonds using Black-Scholes and Vasiciek Models.
 ---
 
-![Formspree Logo](lancaster-university-logo.png)
+![University Logo](lancaster-university-logo.png)
 
 ---
 
