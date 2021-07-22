@@ -53,18 +53,13 @@ header-includes:
 <p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%203-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details>
 <summary>
-Click to expand!
+R code for figures 2, 3 and 4.
 </summary>
-</div>
-<div id="heading" class="section level2">
-<h2>Heading</h2>
-<ol style="list-style-type: decimal">
-<li>A numbered</li>
-<li>list
-<ul>
-<li>With some</li>
-<li>Sub bullets</li>
-</ul></li>
-</ol>
+<p>
+<pre class="{c#}"><code>rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
+
+P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t10))*pnorm((log(S0/c)+(rho2-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
+plot(rho2, P2, type=&quot;l&quot;, xlab=&quot;Interest Rate (rho)&quot;, ylab=&quot;Price at time t=10&quot;, main=&quot;Price P10 against interest rate&quot;)</code></pre>
+</p>
 </details>
 </div>

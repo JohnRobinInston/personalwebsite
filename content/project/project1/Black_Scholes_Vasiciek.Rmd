@@ -97,11 +97,17 @@ plot(rho2, P2, type="l", xlab="Interest Rate (rho)", ylab="Price at time t=10", 
 ```
 
 <details>
-  <summary>Click to expand!</summary>
-  
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
+<summary>R code for figures 2, 3 and 4.</summary>
+<p>
+
+```{c#}
+rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
+
+P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t10))*pnorm((log(S0/c)+(rho2-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
+plot(rho2, P2, type="l", xlab="Interest Rate (rho)", ylab="Price at time t=10", main="Price P10 against interest rate")
+```
+
+</p>
+</details> 
+
+
