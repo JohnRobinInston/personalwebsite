@@ -16,25 +16,40 @@ layout: single
 
 In this project we investigate the properties of financial stochastic processes.  We first consider the implementation of the Black-Scholes model for determining the price of European call options on stock before then utlising the Vasicek model to calculate the future price of bonds.  We discuss the background, benefits and drawbacks of both models before conducting our investigation and summarising our findings.
 
+<br>
+<br>
+
 ---
 
-## Introduction
+## 1.  Introduction
 
 The Black-Scholes model is a mathematical model developed by the economists Fischer Black, Myron Scholes and Robert Merton which is widely used in the pricing of options contacts. The model assumes that the price of heavily traded assets follows a geometric Brownian motion with constant drift and volatility. When applied to a stock option, the model incorporates the constant price variation of the stock, the time value of money, the option’s strike price, and the time to the option’s expiry.
 
+<br>
+
 The Vasicek model is a mathematical model used in financial economics to estimate potential pathways for future interest rate changes. The model states that the movement of interest rates is affected only by random (stochastic) market movements and models interest rate movements as a factor composed of market risk, time, and equilibrium value - where the rate tends to revert towards the mean of those factors over time.
+
+<br>
 
 We will first investigate how the price of a European call option - as given by the Black- Scholes model - varies with changes in time, interest rates, strike price and volatility. We will then simulate an Ornstein-Uhlenbeck process and use this to simulate the price of a bond - using the Vasicek model - over a given time period before evaluating the distribution of the simulated prices.
 
-## The Black-Scholes Model
+<br>
+
+## 2.  The Black-Scholes Model
 
 The price at time <img src="https://render.githubusercontent.com/render/math?math=t_0=0"> of a European call option ('ECO') on a stock with strike price <img src="https://render.githubusercontent.com/render/math?math=c">, expiry time <img src="https://render.githubusercontent.com/render/math?math=t_0">, initial stock price <img src="https://render.githubusercontent.com/render/math?math=S_0">, interest rate <img src="https://render.githubusercontent.com/render/math?math=\rho"> and volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is given by the Black-Scholes ('BS') formula as:
 
+<br>
+
 <img src="https://render.githubusercontent.com/render/math?math=\Large P_{t_0}=S_0\Phi\big(\frac{\log(S_0/c)%2B(\rho%2B\sigma^2/2)t_0}{\sigma\sqrt{t_0}}\big)-c\exp(\rho t_0)\Phi\big(\frac{\log(s_0/c)%2B(\rho-\sigma^2/2)t_0}{\sigma\sqrt{t_0}}\big).">
+
+<br>
 
 We plot the price over time of the ECO <img src="https://render.githubusercontent.com/render/math?math=P_t"> for <img src="https://render.githubusercontent.com/render/math?math=0\leq t\leq 10"> with <img src="https://render.githubusercontent.com/render/math?math=s_0=1">, <img src="https://render.githubusercontent.com/render/math?math=\sigma^2=0.02">, <img src="https://render.githubusercontent.com/render/math?math=\rho=0.03"> and <img src="https://render.githubusercontent.com/render/math?math=c=1">.  This is shown below in Figure 1.
 
-```{r FIGURE 1, include=TRUE, echo=FALSE, fig.align='center', fig.cap="European Call Option Price over Time."}
+<br>
+
+```{r FIGURE 1, include=TRUE, echo=FALSE, fig.align='center', cap ="European Call Option Price over Time."}
 S0=1 
 sigma=sqrt(0.02)
 rho=0.03
