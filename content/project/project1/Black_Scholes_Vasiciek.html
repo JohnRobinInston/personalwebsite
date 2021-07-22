@@ -10,6 +10,8 @@ excerpt: In this project I implement the Black-Scholes and Vasiciek models to de
 output:   
   html_document
 layout: single
+header-includes:
+    - \usepackage{setspace}\onehalfspacing
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
@@ -24,10 +26,10 @@ layout: single
 </div>
 <div id="introduction" class="section level2">
 <h2>1. Introduction</h2>
-<p>The Black-Scholes model is a mathematical model developed by the economists Fischer Black, Myron Scholes and Robert Merton which is widely used in the pricing of options contacts. The model assumes that the price of heavily traded assets follows a geometric Brownian motion with constant drift and volatility. When applied to a stock option, the model incorporates the constant price variation of the stock, the time value of money, the option’s strike price, and the time to the option’s expiry.</p>
-<p><br></p>
-<p>The Vasicek model is a mathematical model used in financial economics to estimate potential pathways for future interest rate changes. The model states that the movement of interest rates is affected only by random (stochastic) market movements and models interest rate movements as a factor composed of market risk, time, and equilibrium value - where the rate tends to revert towards the mean of those factors over time.</p>
-<p><br></p>
+<p>The Black-Scholes model is a mathematical model developed by the economists Fischer Black, Myron Scholes and Robert Merton which is widely used in the pricing of options contacts. The model assumes that the price of heavily traded assets follows a geometric Brownian motion with constant drift and volatility. When applied to a stock option, the model incorporates the constant price variation of the stock, the time value of money, the option’s strike price, and the time to the option’s expiry.
+<br></p>
+<p>The Vasicek model is a mathematical model used in financial economics to estimate potential pathways for future interest rate changes. The model states that the movement of interest rates is affected only by random (stochastic) market movements and models interest rate movements as a factor composed of market risk, time, and equilibrium value - where the rate tends to revert towards the mean of those factors over time.
+<br></p>
 <p>We will first investigate how the price of a European call option - as given by the Black- Scholes model - varies with changes in time, interest rates, strike price and volatility. We will then simulate an Ornstein-Uhlenbeck process and use this to simulate the price of a bond - using the Vasicek model - over a given time period before evaluating the distribution of the simulated prices.</p>
 <p><br></p>
 </div>
@@ -39,5 +41,6 @@ layout: single
 <p><br></p>
 <p>We plot the price over time of the ECO <img src="https://render.githubusercontent.com/render/math?math=P_t"> for <img src="https://render.githubusercontent.com/render/math?math=0\leq t\leq 10"> with <img src="https://render.githubusercontent.com/render/math?math=s_0=1">, <img src="https://render.githubusercontent.com/render/math?math=\sigma^2=0.02">, <img src="https://render.githubusercontent.com/render/math?math=\rho=0.03"> and <img src="https://render.githubusercontent.com/render/math?math=c=1">. This is shown below in Figure 1.</p>
 <p><br></p>
+<p>Figure 1: ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
 <p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%201-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
