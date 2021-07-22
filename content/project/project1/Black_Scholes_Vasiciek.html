@@ -35,12 +35,20 @@ header-includes:
 </div>
 <div id="the-black-scholes-model" class="section level2">
 <h2>2. The Black-Scholes Model</h2>
-<p>The price at time <img src="https://render.githubusercontent.com/render/math?math=t_0=0"> of a European call option (‘ECO’) on a stock with strike price <img src="https://render.githubusercontent.com/render/math?math=c">, expiry time <img src="https://render.githubusercontent.com/render/math?math=t_0">, initial stock price <img src="https://render.githubusercontent.com/render/math?math=S_0">, interest rate <img src="https://render.githubusercontent.com/render/math?math=\rho"> and volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is given by the Black-Scholes (‘BS’) formula as:</p>
+<p>The price at time <img src="https://render.githubusercontent.com/render/math?math=t_0=0"> of a European call option (‘ECO’) on a stock with strike price <img src="https://render.githubusercontent.com/render/math?math=c">, expiry time <img src="https://render.githubusercontent.com/render/math?math=t_0">, initial stock price <img src="https://render.githubusercontent.com/render/math?math=S_0">, interest rate <img src="https://render.githubusercontent.com/render/math?math=\rho"> and volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is given by the Black-Scholes (‘BS’) formula. This is given below in Equation 1.</p>
 <p><br></p>
 <p><img src="https://render.githubusercontent.com/render/math?math=\Large P_{t_0}=S_0\Phi\big(\frac{\log(S_0/c)%2B(\rho%2B\sigma^2/2)t_0}{\sigma\sqrt{t_0}}\big)-c\exp(\rho t_0)\Phi\big(\frac{\log(s_0/c)%2B(\rho-\sigma^2/2)t_0}{\sigma\sqrt{t_0}}\big)."></p>
 <p><br></p>
 <p>We plot the price over time of the ECO <img src="https://render.githubusercontent.com/render/math?math=P_t"> for <img src="https://render.githubusercontent.com/render/math?math=0\leq t\leq 10"> with <img src="https://render.githubusercontent.com/render/math?math=s_0=1">, <img src="https://render.githubusercontent.com/render/math?math=\sigma^2=0.02">, <img src="https://render.githubusercontent.com/render/math?math=\rho=0.03"> and <img src="https://render.githubusercontent.com/render/math?math=c=1">. This is shown below in Figure 1.</p>
 <p><br></p>
-<p>Figure 1: ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
+<p>Figure 1 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
 <p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%201-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p>We see that the price <img src="https://render.githubusercontent.com/render/math?math=P_t"> is increasing over time, which makes sense as the values of the ECO should be dependent on the time the underlying stock has to increase in value. From Equation 1 we can see that <img src="https://render.githubusercontent.com/render/math?math=P_t\rightarrow S_0"> as <img src="https://render.githubusercontent.com/render/math?math=t\rightarrow\infty">.</p>
+<p>We plot the price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> as we vary each of <img src="https://render.githubusercontent.com/render/math?math=\sigma">, <img src="https://render.githubusercontent.com/render/math?math=\rho"> and <img src="https://render.githubusercontent.com/render/math?math=c"> in turn - shown in Figure 2, Figure 3 and Figure 4 respectively.</p>
+<p><br></p>
+<p>Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.</p>
+<p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%202-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Figure 3 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho">.</p>
+<p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%203-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>

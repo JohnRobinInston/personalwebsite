@@ -37,7 +37,7 @@ We will first investigate how the price of a European call option - as given by 
 
 ## 2.  The Black-Scholes Model
 
-The price at time <img src="https://render.githubusercontent.com/render/math?math=t_0=0"> of a European call option ('ECO') on a stock with strike price <img src="https://render.githubusercontent.com/render/math?math=c">, expiry time <img src="https://render.githubusercontent.com/render/math?math=t_0">, initial stock price <img src="https://render.githubusercontent.com/render/math?math=S_0">, interest rate <img src="https://render.githubusercontent.com/render/math?math=\rho"> and volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is given by the Black-Scholes ('BS') formula as:
+The price at time <img src="https://render.githubusercontent.com/render/math?math=t_0=0"> of a European call option ('ECO') on a stock with strike price <img src="https://render.githubusercontent.com/render/math?math=c">, expiry time <img src="https://render.githubusercontent.com/render/math?math=t_0">, initial stock price <img src="https://render.githubusercontent.com/render/math?math=S_0">, interest rate <img src="https://render.githubusercontent.com/render/math?math=\rho"> and volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is given by the Black-Scholes ('BS') formula.  This is given below in Equation 1.
 
 <br>
 
@@ -49,9 +49,9 @@ We plot the price over time of the ECO <img src="https://render.githubuserconten
 
 <br>
 
-Figure 1: ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.
+Figure 1 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.
 
-```{r FIGURE 1, include=TRUE, echo=FALSE, fig.align='center', cap ="European Call Option Price over Time."}
+```{r FIGURE 1, include=TRUE, echo=FALSE, fig.align='center'}
 S0=1 
 sigma=sqrt(0.02)
 rho=0.03
@@ -63,3 +63,35 @@ P=S0*pnorm((log(S0/c)+(rho+(sigma^2)/2)*t)/(sigma*sqrt(t)))-(c*exp(-rho*t))*pnor
 plot(t[-1], P[-1],  type="l",xlab="Time t", ylab="Price P at time t", main="Price P against time t")
 ```
 
+<br>
+
+We see that the price <img src="https://render.githubusercontent.com/render/math?math=P_t"> is increasing over time, which makes sense as the values of the ECO should be dependent on the time the underlying stock has to increase in value.  From Equation 1 we can see that <img src="https://render.githubusercontent.com/render/math?math=P_t\rightarrow S_0"> as <img src="https://render.githubusercontent.com/render/math?math=t\rightarrow\infty">.
+
+We plot the price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> as we vary each of <img src="https://render.githubusercontent.com/render/math?math=\sigma">, <img src="https://render.githubusercontent.com/render/math?math=\rho"> and <img src="https://render.githubusercontent.com/render/math?math=c"> in turn - shown in Figure 2, Figure 3 and Figure 4 respectively.
+
+<br>
+
+Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.
+
+```{r FIGURE 2, include=TRUE, echo=FALSE, fig.align='center'}
+
+#Set t=10
+t10=10
+
+sigma1=seq(0,2, by=0.01)
+
+P1=S0*pnorm((log(S0/c)+(rho+(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))-(c*exp(-rho*t10))*pnorm((log(S0/c)+(rho-(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))
+plot(sigma1, P1, xlim=c(0, max(sigma1)),type="l", xlab="Volatility (sigma)", ylab="Price at time t=10", main="Price P10 against volatility")
+
+```
+
+Figure 3 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho">.
+
+```{r FIGURE 3, include=TRUE, echo=FALSE, fig.align='center'}
+
+rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
+
+P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t10))*pnorm((log(S0/c)+(rho2-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
+plot(rho2, P2, type="l", xlab="Interest Rate (rho)", ylab="Price at time t=10", main="Price P10 against interest rate")
+
+```
