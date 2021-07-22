@@ -7,12 +7,7 @@ categories:
 author: "John Inston"
 date: "2020-11-30"
 output:   
-  html_document:
-    toc: true # table of content true
-    toc_depth: 3  # upto three depths of headings (specified by #, ## and ###)
-    number_sections: true  ## if you want number sections at each table header
-    theme: united  # many options for theme, this one is my favorite.
-    highlight: tango  # specifies the syntax highlighting style
+  html_document
 excerpt: In this project I implement the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively.  
 ---
 
@@ -25,6 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+\[F(x) = 4x^2\times 9a\]
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
