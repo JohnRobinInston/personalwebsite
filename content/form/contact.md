@@ -13,7 +13,6 @@ submit_button_label: Send Message
 title: Contact
 type: form
 url: contact
-formspree_form_id: johnrobininston@gmail.com
 ---
 
 ** Contact page don't contain a body, just the front matter above.
