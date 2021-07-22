@@ -1,8 +1,15 @@
 ---
-title: "Black_Scholes_Vasiciek_Project"
+title: "Implementing Black Scholes & Vasiciek Models."
+categories:
+- Quantitative Analysis
+- Stochastic Processes
+- Financial Mathematics
 author: "John Inston"
 date: "22/07/2021"
 output: html_document
+excerpt: This theme has a form-to-email feature built in, thanks to the simple Formspree
+  integration. All you need to activate the form is a valid recipient email address
+  saved in the form front matter.
 ---
 
 ```{r setup, include=FALSE}
