@@ -1,8 +1,6 @@
 ---
 date: "2019-02-25T13:38:41-06:00"
-description: **Thank you** for visiting my website.  If you would like to contact me 
-with regards to potential positions, projects or for any other reason please feel free 
-to send me an email.
+description: **Thank you** for visiting my website.  
 draft: false
 formspree_form_id: id-from-formspree
 layout: split-right
