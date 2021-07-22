@@ -25,15 +25,15 @@ tags:
 title: Pricing call options and bonds using Black-Scholes and Vasiciek Models.
 ---
 
-
 ![Formspree Logo](lancaster-university-logo.png)
 
 ---
 
-### Functional Form
+### Abstract
 
-This theme has a **form-to-email** feature built in, thanks to the simple Formspree integration. All you need to activate the form is a valid recipient email address saved in the front matter of the form
-(`/content/forms/contact.md`). Of course, the example shown below (`your@email.here`) must not be used. Please use your actual email address.
+A project investigating the properties of financial stochastic processes. Specifically, we will consider the implementation of both the Black-Scholes model for determining the price of European call options on stock and the Vasicek model for calculating the future price of bonds. We discuss the background, benefits and drawbacks of both models before conducting our investigation and discussing our findings.
+
+---
 
 ```toml
 # please replace with a valid Formspree form id or email address
