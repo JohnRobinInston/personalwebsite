@@ -19,10 +19,10 @@ links:
   icon_pack: fab
   name: code
   url: https://github.com/apreshill/bakeoff
-subtitle: An R Package
+subtitle: Stochastic Processes
 tags:
 - hugo-site
-title: Bakeoff
+title: Pricing call options and bonds using Black-Scholes and Vasiciek Models.
 ---
 
 ![Formspree Logo](formspree-logo.png)
