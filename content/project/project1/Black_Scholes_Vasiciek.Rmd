@@ -95,3 +95,13 @@ P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t
 plot(rho2, P2, type="l", xlab="Interest Rate (rho)", ylab="Price at time t=10", main="Price P10 against interest rate")
 
 ```
+
+<details>
+  <summary>Click to expand!</summary>
+  
+  ## Heading
+  1. A numbered
+  2. list
+     * With some
+     * Sub bullets
+</details>
