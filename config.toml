@@ -84,11 +84,11 @@ enableEmoji = true
   [[params.social]]
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://github.com/JohnRobinInston"
+      url       = "https://github.com/apreshill/apero"
   [[params.social]]
-      icon      = "linkedin" # icon name without the 'fa-'
+      icon      = "facebook-square" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://www.linkedin.com/in/johninston/"
+      url       = "https://www.facebook.com/hashtag/ap%C3%A9ro"
   [[params.social]]
       icon      = "instagram" # icon name without the 'fa-'
       icon_pack = "fab"
@@ -154,9 +154,9 @@ enableEmoji = true
     weight = 7
   [[menu.header]]
     name = "Contact"
-    title = "Contact Page"
+    title = "Contact form"
     url = "/contact/"
-    weight = 8
+    weight = 7
     
   # Configure footer  
   [[menu.footer]]
