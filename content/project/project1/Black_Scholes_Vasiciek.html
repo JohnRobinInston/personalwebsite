@@ -8,10 +8,7 @@ author: "John Inston"
 date: "2020-11-30"
 excerpt: In this project I implement the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively.  
 output:   
-  html_document:
-    toc: true
-    toc_float: true
-    mathjax: local
+  html_document
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
@@ -27,7 +24,9 @@ output:
 <p>The Black-Scholes model is a mathematical model developed by the economists Fischer Black, Myron Scholes and Robert Merton which is widely used in the pricing of options contacts. The model assumes that the price of heavily traded assets follows a geometric Brownian motion with constant drift and volatility. When applied to a stock option, the model incorporates the constant price variation of the stock, the time value of money, the option’s strike price, and the time to the option’s expiry.</p>
 <p>The Vasicek model is a mathematical model used in financial economics to estimate potential pathways for future interest rate changes. The model states that the movement of interest rates is affected only by random (stochastic) market movements and models interest rate movements as a factor composed of market risk, time, and equilibrium value - where the rate tends to revert towards the mean of those factors over time.</p>
 <p>We will first investigate how the price of a European call option - as given by the Black- Scholes model - varies with changes in time, interest rates, strike price and volatility. We will then simulate an Ornstein-Uhlenbeck process and use this to simulate the price of a bond - using the Vasicek model - over a given time period before evaluating the distribution of the simulated prices.</p>
-<p><span class="math display">\[F(x) = \sqrt{a}\]</span></p>
+</div>
+<div id="the-black-scholes-model" class="section level2">
+<h2>The Black-Scholes Model</h2>
 <p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
 <pre class="r"><code>summary(cars)</code></pre>
 <pre><code>##      speed           dist       

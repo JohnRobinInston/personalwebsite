@@ -8,20 +8,7 @@ author: "John Inston"
 date: "2020-11-30"
 excerpt: In this project I implement the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively.  
 output:   
-  html_document:
-    toc: true
-    toc_float: true
-    mathjax: local
-<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  }
-};
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+  html_document
 ---
 
 ### Abstract
@@ -38,7 +25,7 @@ The Vasicek model is a mathematical model used in financial economics to estimat
 
 We will first investigate how the price of a European call option - as given by the Black- Scholes model - varies with changes in time, interest rates, strike price and volatility. We will then simulate an Ornstein-Uhlenbeck process and use this to simulate the price of a bond - using the Vasicek model - over a given time period before evaluating the distribution of the simulated prices.
 
-$F(x) = \sqrt{a}$
+## The Black-Scholes Model
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
