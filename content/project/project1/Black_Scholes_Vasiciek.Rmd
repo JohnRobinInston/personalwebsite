@@ -27,18 +27,6 @@ We will first investigate how the price of a European call option - as given by 
 
 ## The Black-Scholes Model
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The price at time <img src="https://render.githubusercontent.com/render/math?math=t_0=0"> of a European call option ('ECO') on a stock with strike price <img src="https://render.githubusercontent.com/render/math?math=c">, expiry time <img src="https://render.githubusercontent.com/render/math?math=t_0">, initial stock price <img src="https://render.githubusercontent.com/render/math?math=S_0">, interest rate <img src="https://render.githubusercontent.com/render/math?math=\rho"> and volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is given by the Black-Scholes ('BS') formula as:
 
-```{r cars}
-summary(cars)
-```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
