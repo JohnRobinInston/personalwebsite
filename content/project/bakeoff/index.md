@@ -33,6 +33,8 @@ title: Pricing call options and bonds using Black-Scholes and Vasiciek Models.
 
 A project investigating the properties of financial stochastic processes. Specifically, we will consider the implementation of both the Black-Scholes model for determining the price of European call options on stock and the Vasicek model for calculating the future price of bonds. We discuss the background, benefits and drawbacks of both models before conducting our investigation and discussing our findings.
 
+\[4x^2\]
+
 ---
 
 ```toml
