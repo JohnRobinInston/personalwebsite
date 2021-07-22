@@ -154,9 +154,9 @@ enableEmoji = true
     weight = 7
   [[menu.header]]
     name = "Contact"
-    title = "Contact form"
+    title = "Contact Page"
     url = "/contact/"
-    weight = 7
+    weight = 8
     
   # Configure footer  
   [[menu.footer]]
