@@ -152,6 +152,11 @@ enableEmoji = true
     title = "Element Page"
     url = "/elements/"
     weight = 7
+  [[menu.header]]
+    name = "Contact"
+    title = "Contact Page"
+    url = "/form/"
+    weight = 8
     
   # Configure footer  
   [[menu.footer]]
