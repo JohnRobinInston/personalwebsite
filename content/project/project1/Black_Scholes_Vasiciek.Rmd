@@ -41,7 +41,8 @@ The price at time <img src="https://render.githubusercontent.com/render/math?mat
 
 <br>
 
-<img src="https://render.githubusercontent.com/render/math?math=\Large P_{t_0}=S_0\Phi\big(\frac{\log(S_0/c)%2B(\rho%2B\sigma^2/2)t_0}{\sigma\sqrt{t_0}}\big)-c\exp(\rho t_0)\Phi\big(\frac{\log(s_0/c)%2B(\rho-\sigma^2/2)t_0}{\sigma\sqrt{t_0}}\big).">
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large P_{t_0}=S_0\Phi\big(\frac{\log(S_0/c)%2B(\rho%2B\sigma^2/2)t_0}{\sigma\sqrt{t_0}}\big)-c\exp(\rho t_0)\Phi\big(\frac{\log(s_0/c)%2B(\rho-\sigma^2/2)t_0}{\sigma\sqrt{t_0}}\big)."></p>
 
 <br>
 
