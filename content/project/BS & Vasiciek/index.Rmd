@@ -9,7 +9,7 @@ date: "2020-11-30"
 excerpt: In this project I implement the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively.  
 output:   
   html_document
-layout: single
+layout: single-sidebar
 header-includes:
     - \usepackage{setspace}\onehalfspacing
 ---
