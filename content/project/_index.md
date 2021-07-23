@@ -1,5 +1,5 @@
 ---
-author: The R Markdown Team @RStudio
+author: John Robin Inston
 cascade:
   show_author_byline: true
   show_comments: false
@@ -8,7 +8,7 @@ cascade:
     show_sidebar_adunit: true
     text_link_label: View all projects
     text_link_url: /project/
-description: An online library of my project work.
+description: An online library of my projects.  
 layout: list-grid
 show_author_byline: true
 show_post_date: false
@@ -20,7 +20,7 @@ sidebar:
   show_sidebar_adunit: false
   text_link_label: ""
   text_link_url: ""
-  title: A Sidebar for Your Projects
+  title: Projects Sidebar
 title: Project Portfolio
 ---
 
