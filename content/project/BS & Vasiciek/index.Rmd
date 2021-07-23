@@ -14,6 +14,8 @@ header-includes:
     - \usepackage{setspace}\onehalfspacing
 ---
 
+![](featured-hex.png)
+
 ### Abstract
 
 In this project we investigate the properties of financial stochastic processes.  We first consider the implementation of the Black-Scholes model for determining the price of European call options on stock before then utlising the Vasicek model to calculate the future price of bonds.  We discuss the background, benefits and drawbacks of both models before conducting our investigation and summarising our findings.
@@ -152,6 +154,80 @@ As the strike price <img src="https://render.githubusercontent.com/render/math?m
 
 ## 3. Ornstein-Uhlenbeck Processes
 
+The spot-rate <img src="https://render.githubusercontent.com/render/math?math=\{R_s:s>0\}"> is an Ornstein-Uhlenbeck (OU) process - with initial spot rate <img src="https://render.githubusercontent.com/render/math?math=R_0">, long-term mean <img src="https://render.githubusercontent.com/render/math?math=\mu"> and reversion speed <img src="https://render.githubusercontent.com/render/math?math=\theta>0"> - which is given by Equation 2 below.
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large R_s=e^{-\theta s}R_0%2B(1-e^{-\theta s})\mu%2B X_s."></p>
+
+<br>
+
+Here, <img src="https://render.githubusercontent.com/render/math?math=X_s"> is an OU process with volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma>0"> and reversion parameter <img src="https://render.githubusercontent.com/render/math?math=\theta>0">. This is equivalent to stating the following.
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large E[X_s]=0 \hspace{.5cm}\text{and}\hspace{.5cm}Cov(X_s, X_t)=\frac{\sigma^2}{2\theta}e^{-\theta(s+t)}e^{2\theta\min(s, t)-1}."></p>
+
+<br>
+
+We simulate the OU process <img src="https://render.githubusercontent.com/render/math?math=\{R_s:0\leq s\leq 10\}"> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05"> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02"> and produce a plot of our results.  These are shown below in Figure 5.
+
+<br>
+
+```{r FIGURE 5, include=TRUE, echo=FALSE, fig.align='center'}
+##Define the OU function
+rOU=function(n,N,Delta,theta,sigma){ 
+  times=(0:n)*Delta ##vector of t_0,t_1,..,t_n 
+  X=matrix(0,nrow=N,ncol=n+1)
+  for(i in 1:n){
+    x=X[,i]#current value
+    m=x*exp(-theta*Delta) #mean of new value 
+    v=sigma^2*(1-exp(-2*theta*Delta))/(2*theta) ##variance of new value 
+    X[,i+1]=rnorm(N,m,sqrt(v)) ##simulate new value
+  }
+  return(list(X=X,times=times)) 
+}
+
+##first simulate X_t
+n=10000
+N=10
+Delta=10/n
+theta=0.5
+sigma=0.02
+OU=rOU(n, N, Delta, theta, sigma)
+#plot(range(OU$times),range(OU$X),type="n",xlab="Time",ylab="#X_t") 
+#for(i in 1:N){
+#  lines(OU$times,OU$X[i,])
+#}
+
+##Now transform
+R0=0.1
+mu=0.05
+
+##Storage for R_t
+Rt=matrix(0, nrow=N, ncol=n+1)
+
+##Loop to transform OU to R_t
+for(i in 1:N){
+  Rt[i,]=exp(-theta*OU$times)*R0+(1-exp(-theta*OU$times))*mu+OU$X[i,]
+}
+
+##plot
+plot(range(OU$times), range(Rt), type="n", xlab="Time (s)", ylab="Spot Rate R", main="Spot Rates over Time")
+for(i in 1:N){
+  lines(OU$times, Rt[i,], col=i)
+}
+
+```
+
+<p style="text-align: center;"> 
+Figure 5 - Spot rate <img src="https://render.githubusercontent.com/render/math?math=\{R_s:0\leq s\leq 10\}"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
+
+<br>
+
+The expressions for the mean and variance of this process are given by:
 
 
 
