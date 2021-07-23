@@ -139,7 +139,7 @@ enableEmoji = true
     #name = "Elements"
     #title = "Element Page"
     #url = "/elements/"
-    3weight = 7
+    #weight = 5
   [[menu.header]]
     name = "Contact"
     title = "Contact Page"
