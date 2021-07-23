@@ -41,25 +41,55 @@ header-includes:
 <p><br></p>
 <p>We plot the price over time of the ECO <img src="https://render.githubusercontent.com/render/math?math=P_t"> for <img src="https://render.githubusercontent.com/render/math?math=0\leq t\leq 10"> with <img src="https://render.githubusercontent.com/render/math?math=s_0=1">, <img src="https://render.githubusercontent.com/render/math?math=\sigma^2=0.02">, <img src="https://render.githubusercontent.com/render/math?math=\rho=0.03"> and <img src="https://render.githubusercontent.com/render/math?math=c=1">. This is shown below in Figure 1.</p>
 <p><br></p>
-<p>Figure 1 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
 <p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%201-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p style="text-align: center;">
+Figure 1 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.
+</p>
 <p><br></p>
 <p>We see that the price <img src="https://render.githubusercontent.com/render/math?math=P_t"> is increasing over time, which makes sense as the values of the ECO should be dependent on the time the underlying stock has to increase in value. From Equation 1 we can see that <img src="https://render.githubusercontent.com/render/math?math=P_t\rightarrow S_0"> as <img src="https://render.githubusercontent.com/render/math?math=t\rightarrow\infty">.</p>
 <p>We plot the price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> as we vary each of <img src="https://render.githubusercontent.com/render/math?math=\sigma">, <img src="https://render.githubusercontent.com/render/math?math=\rho"> and <img src="https://render.githubusercontent.com/render/math?math=c"> in turn - shown in Figure 2, Figure 3 and Figure 4 respectively.</p>
 <p><br></p>
-<p>Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.</p>
 <p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%202-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Figure 3 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho">.</p>
+<p style="text-align: center;">
+Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.
+</p>
 <p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%203-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p style="text-align: center;">
+Figure 3 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho">.
+</p>
+<p><img src="/project/project1/Black_Scholes_Vasiciek_files/figure-html/FIGURE%204-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p style="text-align: center;">
+Figure 4 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various strike prices <img src="https://render.githubusercontent.com/render/math?math=c">.
+</p>
 <details>
 <summary>
-R code for figures 2, 3 and 4.
+R code for Figures 2, 3 and 4.
 </summary>
 <p>
-<pre class="{c#}"><code>rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
+<pre class="{c#}"><code>#Set t=10
+t10=10
+
+sigma1=seq(0,2, by=0.01)
+
+P1=S0*pnorm((log(S0/c)+(rho+(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))-(c*exp(-rho*t10))*pnorm((log(S0/c)+(rho-(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))
+plot(sigma1, P1, xlim=c(0, max(sigma1)),type=&quot;l&quot;, xlab=&quot;Volatility (sigma)&quot;, ylab=&quot;Price at time t=10&quot;, main=&quot;Price P10 against volatility&quot;)
+
+rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
 
 P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t10))*pnorm((log(S0/c)+(rho2-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
-plot(rho2, P2, type=&quot;l&quot;, xlab=&quot;Interest Rate (rho)&quot;, ylab=&quot;Price at time t=10&quot;, main=&quot;Price P10 against interest rate&quot;)</code></pre>
+plot(rho2, P2, type=&quot;l&quot;, xlab=&quot;Interest Rate (rho)&quot;, ylab=&quot;Price at time t=10&quot;, main=&quot;Price P10 against interest rate&quot;)
+
+c3=seq(0,5, by=0.01)
+
+P3=S0*pnorm((log(S0/c3)+(rho+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c3*exp(-rho*t10))*pnorm((log(S0/c3)+(rho-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
+plot(c3, P3, type=&quot;line&quot;, xlab=&quot;Strike Price (c)&quot;, ylab=&quot;Price at time t=10&quot;, main=&quot;Price P10 against strike price&quot;)</code></pre>
 </p>
 </details>
+<p><br></p>
+<p>As both volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> and interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho"> increase we see that <img src="https://render.githubusercontent.com/render/math?math=P_{10}\rightarrow S_0">. This is because high underlying stock volatility and interest rates both increase the potential option return which increases the options value up to the initial price of the stock. The option value is limited to this value because if the option price were to rise above the stock price then there would be no reason for investors to purchase the option rather than the stock.</p>
+<p>As the strike price <img src="https://render.githubusercontent.com/render/math?math=c"> increases we see that <img src="https://render.githubusercontent.com/render/math?math=P_{10}\rightarrow 0">. This is because if the option has a high strike price it is less likely that the underlying stock will reach this price during the period of the option which makes the option less valuable.</p>
+<p><br></p>
+</div>
+<div id="ornstein-uhlenbeck-processes" class="section level2">
+<h2>3. Ornstein-Uhlenbeck Processes</h2>
 </div>
