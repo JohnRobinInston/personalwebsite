@@ -59,7 +59,7 @@ t=seq(0, 10, by=0.001)
 
 #Define our formula for the price
 P=S0*pnorm((log(S0/c)+(rho+(sigma^2)/2)*t)/(sigma*sqrt(t)))-(c*exp(-rho*t))*pnorm((log(S0/c)+(rho-(sigma^2)/2)*t)/(sigma*sqrt(t)))
-plot(t[-1], P[-1],  type="l",xlab="Time t", ylab="Price P at time t", main="Price P against time t")
+plot(t[-1], P[-1],  type="l",xlab="Time (t)", ylab="Price (P)", main="Option price over time.")
 ```
 
 <p style="text-align: center;"> 
@@ -88,6 +88,8 @@ plot(sigma1, P1, xlim=c(0, max(sigma1)),type="l", xlab="Volatility (sigma)", yla
 <p style="text-align: center;"> 
 Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.</p>
 
+<br>
+
 ```{r FIGURE 3, include=TRUE, echo=FALSE, fig.align='center'}
 
 rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
@@ -99,6 +101,8 @@ plot(rho2, P2, type="l", xlab="Interest Rate (rho)", ylab="Price at time t=10", 
 
 <p style="text-align: center;"> 
 Figure 3 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho">.</p>
+
+<br>
 
 ```{r FIGURE 4, include=TRUE, echo=FALSE, fig.align='center'}
 c3=seq(0,5, by=0.01)
