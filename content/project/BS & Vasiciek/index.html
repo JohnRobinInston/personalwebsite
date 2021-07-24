@@ -1,5 +1,6 @@
 ---
 title: "Implementing Black Scholes & Vasiciek Models."
+subtitle: "A project implementing the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively."
 categories:
 - Quantitative Analysis
 - Stochastic Processes
@@ -21,9 +22,9 @@ header-includes:
 <div id="abstract" class="section level3">
 <h3>Abstract</h3>
 <p>In this project we investigate the properties of financial stochastic processes. We first consider the implementation of the Black-Scholes model for determining the price of European call options on stock before then utlising the Vasicek model to calculate the future price of bonds. We discuss the background, benefits and drawbacks of both models before conducting our investigation and summarising our findings.</p>
-<p><br>
-<br></p>
+<p><br></p>
 <hr />
+<p><br></p>
 </div>
 <div id="introduction" class="section level2">
 <h2>1. Introduction</h2>
@@ -32,6 +33,8 @@ header-includes:
 <p>The Vasicek model is a mathematical model used in financial economics to estimate potential pathways for future interest rate changes. The model states that the movement of interest rates is affected only by random (stochastic) market movements and models interest rate movements as a factor composed of market risk, time, and equilibrium value - where the rate tends to revert towards the mean of those factors over time.
 <br></p>
 <p>We will first investigate how the price of a European call option - as given by the Black- Scholes model - varies with changes in time, interest rates, strike price and volatility. We will then simulate an Ornstein-Uhlenbeck process and use this to simulate the price of a bond - using the Vasicek model - over a given time period before evaluating the distribution of the simulated prices.</p>
+<p><br></p>
+<hr />
 <p><br></p>
 </div>
 <div id="the-black-scholes-model" class="section level2">
@@ -94,6 +97,8 @@ plot(c3, P3, type=&quot;line&quot;, xlab=&quot;Strike Price (c)&quot;, ylab=&quo
 <p>As both volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> and interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho"> increase we see that <img src="https://render.githubusercontent.com/render/math?math=P_{10}\rightarrow S_0">. This is because high underlying stock volatility and interest rates both increase the potential option return which increases the options value up to the initial price of the stock. The option value is limited to this value because if the option price were to rise above the stock price then there would be no reason for investors to purchase the option rather than the stock.</p>
 <p>As the strike price <img src="https://render.githubusercontent.com/render/math?math=c"> increases we see that <img src="https://render.githubusercontent.com/render/math?math=P_{10}\rightarrow 0">. This is because if the option has a high strike price it is less likely that the underlying stock will reach this price during the period of the option which makes the option less valuable.</p>
 <p><br></p>
+<hr />
+<p><br></p>
 </div>
 <div id="ornstein-uhlenbeck-processes" class="section level2">
 <h2>3. Ornstein-Uhlenbeck Processes</h2>
@@ -117,4 +122,14 @@ Figure 5 - Spot rate <img src="https://render.githubusercontent.com/render/math?
 </p>
 <p><br></p>
 <p>The expressions for the mean and variance of this process are given by:</p>
+<p><br></p>
+<p style="text-align: center;">
+<img src="https://render.githubusercontent.com/render/math?math=\Large E[R_s]=e^{-\theta s}R_0+(1+e^{-\theta s})\mu,">
+</p>
+<p><br></p>
+<p style="text-align: center;">
+<img src="https://render.githubusercontent.com/render/math?math=\Large V[R_s]=\frac{\sigma^2}{2\theta}(1-e^{-s\theta s}).">
+</p>
+<p><br></p>
+<p>We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.</p>
 </div>

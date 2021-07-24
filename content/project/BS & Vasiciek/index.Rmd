@@ -1,5 +1,6 @@
 ---
 title: "Implementing Black Scholes & Vasiciek Models."
+subtitle: "A project implementing the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively."
 categories:
 - Quantitative Analysis
 - Stochastic Processes
@@ -21,9 +22,10 @@ header-includes:
 In this project we investigate the properties of financial stochastic processes.  We first consider the implementation of the Black-Scholes model for determining the price of European call options on stock before then utlising the Vasicek model to calculate the future price of bonds.  We discuss the background, benefits and drawbacks of both models before conducting our investigation and summarising our findings.
 
 <br>
-<br>
 
 ---
+
+<br>
 
 ## 1.  Introduction
 
@@ -34,6 +36,10 @@ The Vasicek model is a mathematical model used in financial economics to estimat
 <br>
 
 We will first investigate how the price of a European call option - as given by the Black- Scholes model - varies with changes in time, interest rates, strike price and volatility. We will then simulate an Ornstein-Uhlenbeck process and use this to simulate the price of a bond - using the Vasicek model - over a given time period before evaluating the distribution of the simulated prices.
+
+<br>
+
+---
 
 <br>
 
@@ -152,6 +158,10 @@ As the strike price <img src="https://render.githubusercontent.com/render/math?m
 
 <br>
 
+---
+
+<br>
+
 ## 3. Ornstein-Uhlenbeck Processes
 
 The spot-rate <img src="https://render.githubusercontent.com/render/math?math=\{R_s:s>0\}"> is an Ornstein-Uhlenbeck (OU) process - with initial spot rate <img src="https://render.githubusercontent.com/render/math?math=R_0">, long-term mean <img src="https://render.githubusercontent.com/render/math?math=\mu"> and reversion speed <img src="https://render.githubusercontent.com/render/math?math=\theta>0"> - which is given by Equation 2 below.
@@ -229,5 +239,18 @@ Figure 5 - Spot rate <img src="https://render.githubusercontent.com/render/math?
 
 The expressions for the mean and variance of this process are given by:
 
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large E[R_s]=e^{-\theta s}R_0+(1+e^{-\theta s})\mu,"></p>
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large V[R_s]=\frac{\sigma^2}{2\theta}(1-e^{-s\theta s})."></p>
+
+<br>
+
+We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.
 
 
