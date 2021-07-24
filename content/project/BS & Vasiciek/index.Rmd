@@ -59,6 +59,9 @@ We plot the price over time of the ECO <img src="https://render.githubuserconten
 <br>
 
 ```{r FIGURE 1, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
+
+# FIGURE 1
+
 library(ggplot2)
 
 S0=1 
@@ -72,14 +75,44 @@ P=S0*pnorm((log(S0/c)+(rho+(sigma^2)/2)*t)/(sigma*sqrt(t)))-(c*exp(-rho*t))*pnor
 
 fig1 = data.frame(P, t)
 
-plot1 = ggplot(data = fig1, aes(P,t))+geom_line()
-plot1 + ggtitle("Option price (P) over time (t).") +
-  xlab("Time (t)") + ylab("Option price (P_t)")
+plot1 = ggplot(data = fig1, aes(t,P))+geom_line()
+plot1 + ggtitle("Option Price over time.") +
+  xlab("Time (t)") + ylab("Option Price (P_t)")
 
 ```
 
 <p style="text-align: center;"> 
 Figure 1 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
+
+<details>
+<summary>R code for Figure 1.</summary>
+<p>
+
+```{c#}
+# FIGURE 1
+
+# Install ggplot2 library
+library(ggplot2)
+
+# Define variables
+S0=1 
+sigma=sqrt(0.02)
+rho=0.03
+c=1
+t=seq(0.001, 10, by=0.001)
+
+# Define our formula for the price
+P=S0*pnorm((log(S0/c)+(rho+(sigma^2)/2)*t)/(sigma*sqrt(t)))-(c*exp(-rho*t))*pnorm((log(S0/c)+(rho-(sigma^2)/2)*t)/(sigma*sqrt(t)))
+
+# Produce our plot
+fig1 = data.frame(P, t)
+plot1 = ggplot(data = fig1, aes(t,P))+geom_line()
+plot1 + ggtitle("Option Price over time.") +
+  xlab("Time (t)") + ylab("Option Price (P_t)")
+```
+
+</p>
+</details> 
 
 <br>
 
@@ -91,13 +124,22 @@ We plot the price <img src="https://render.githubusercontent.com/render/math?mat
 
 ```{r FIGURE 2, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
 
-#Set t=10
+#FIGURE 2
+
+# Set t=10
 t10=10
 
+# Set varying sigma
 sigma1=seq(0,2, by=0.01)
 
+# Define our formula for the price
 P1=S0*pnorm((log(S0/c)+(rho+(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))-(c*exp(-rho*t10))*pnorm((log(S0/c)+(rho-(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))
-plot(sigma1, P1, xlim=c(0, max(sigma1)),type="l", xlab="Volatility (sigma)", ylab="Price at time t=10", main="Price P10 against volatility")
+
+# Produce our figure
+fig2 = data.frame(P1, sigma1)
+plot2 = ggplot(data = fig2, aes(sigma1,P1))+geom_line()
+plot2 + ggtitle("Option price at time t=10 for various volatility levels.") +
+  xlab("Volatility (sigma)") + ylab("Option Price (P) at t=10.")
 
 ```
 
@@ -107,11 +149,19 @@ Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?
 <br>
 
 ```{r FIGURE 3, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
+# FIGURE 3
 
+# Set varying rho
 rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
 
+#Define our formula for the price
 P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t10))*pnorm((log(S0/c)+(rho2-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
-plot(rho2, P2, type="l", xlab="Interest Rate (rho)", ylab="Price at time t=10", main="Price P10 against interest rate")
+
+#Produce our figure
+fig3 = data.frame(P2, rho2)
+plot3 = ggplot(data = fig3, aes(rho2,P2))+geom_line()
+plot3 + ggtitle("Option price at time t=10 for various interest rates.") +
+  xlab("Interest Rate (rho)") + ylab("Option Price (P) at t=10.")
 
 ```
 
@@ -121,10 +171,19 @@ Figure 3 - ECO price <img src="https://render.githubusercontent.com/render/math?
 <br>
 
 ```{r FIGURE 4, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
+# FIGURE 4
+
+# Set varying strike price
 c3=seq(0,5, by=0.01)
 
+# Define our formula for the price
 P3=S0*pnorm((log(S0/c3)+(rho+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c3*exp(-rho*t10))*pnorm((log(S0/c3)+(rho-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
-plot(c3, P3, type="l", xlab="Strike Price (c)", ylab="Price at time t=10", main="Price P10 against strike price")
+
+# Produce our figure
+fig4 = data.frame(P3, c3)
+plot4 = ggplot(data = fig4, aes(c3,P3))+geom_line()
+plot4 + ggtitle("Option price at time t=10 for various strike prices.") +
+  xlab("Strike Price (c)") + ylab("Option price (P) at t=10.")
 
 ```
 
@@ -136,23 +195,51 @@ Figure 4 - ECO price <img src="https://render.githubusercontent.com/render/math?
 <p>
 
 ```{c#}
-#Set t=10
+#FIGURE 2 ----
+
+# Set t=10
 t10=10
 
+# Set  varying sigma
 sigma1=seq(0,2, by=0.01)
 
+# Define our formula for the price
 P1=S0*pnorm((log(S0/c)+(rho+(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))-(c*exp(-rho*t10))*pnorm((log(S0/c)+(rho-(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))
-plot(sigma1, P1, xlim=c(0, max(sigma1)),type="l", xlab="Volatility (sigma)", ylab="Price at time t=10", main="Price P10 against volatility")
 
+# Produce our figure
+fig2 = data.frame(P1, sigma1)
+plot2 = ggplot(data = fig2, aes(sigma1,P1))+geom_line()
+plot2 + ggtitle("Option price at time t=10 for various volatility levels.") +
+  xlab("Volatility (sigma)") + ylab("Option Price (P) at t=10.")
+  
+# FIGURE 3 ---
+
+# Set varying rho
 rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
 
+#Define our formula for the price
 P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t10))*pnorm((log(S0/c)+(rho2-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
-plot(rho2, P2, type="l", xlab="Interest Rate (rho)", ylab="Price at time t=10", main="Price P10 against interest rate")
 
+#Produce our figure
+fig3 = data.frame(P2, rho2)
+plot3 = ggplot(data = fig3, aes(rho2,P2))+geom_line()
+plot3 + ggtitle("Option price at time t=10 for various interest rates.") +
+  xlab("Interest Rate (rho)") + ylab("Option Price (P) at t=10.")
+  
+# FIGURE 4 ---
+
+# Set varying strike price
 c3=seq(0,5, by=0.01)
 
+# Define our formula for the price
 P3=S0*pnorm((log(S0/c3)+(rho+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c3*exp(-rho*t10))*pnorm((log(S0/c3)+(rho-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
-plot(c3, P3, type="line", xlab="Strike Price (c)", ylab="Price at time t=10", main="Price P10 against strike price")
+
+# Produce our figure
+fig4 = data.frame(P3, c3)
+plot4 = ggplot(data = fig4, aes(c3,P3))+geom_line()
+plot4 + ggtitle("Option price at time t=10 for various strike prices.") +
+  xlab("Strike Price (c)") + ylab("Option price (P) at t=10.")
+
 ```
 
 </p>
