@@ -63,6 +63,7 @@ We plot the price over time of the ECO <img src="https://render.githubuserconten
 # FIGURE 1
 
 library(ggplot2)
+library(reshape)
 
 S0=1 
 sigma=sqrt(0.02)
@@ -319,11 +320,16 @@ for(i in 1:N){
   Rt[i,]=exp(-theta*OU$times)*R0+(1-exp(-theta*OU$times))*mu+OU$X[i,]
 }
 
-##plot
-plot(range(OU$times), range(Rt), type="n", xlab="Time (s)", ylab="Spot Rate R", main="Spot Rates over Time")
-for(i in 1:N){
-  lines(OU$times, Rt[i,], col=i)
-}
+#Produce plot
+Rt = data.frame(t(Rt))
+df <- data.frame(x = seq_along(Rt[, 1]),Rt)
+df <- melt(df, id.vars = "x")
+cols = 2:11
+ggplot(df, aes(x = x, y = value, color = variable)) +
+  geom_line()+ggtitle("Spot rate simulations over time.") +
+  xlab("Time (s)") + ylab("Spot Rate (R_s)")+
+  guides(color = guide_legend(title = "Simulation"))+
+  scale_color_manual(values = cols)
 
 ```
 
