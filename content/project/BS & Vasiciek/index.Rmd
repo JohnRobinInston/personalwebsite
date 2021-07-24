@@ -58,16 +58,24 @@ We plot the price over time of the ECO <img src="https://render.githubuserconten
 
 <br>
 
-```{r FIGURE 1, include=TRUE, echo=FALSE, fig.align='center'}
+```{r FIGURE 1, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
+library(ggplot2)
+
 S0=1 
 sigma=sqrt(0.02)
 rho=0.03
 c=1
-t=seq(0, 10, by=0.001)
+t=seq(0.001, 10, by=0.001)
 
 #Define our formula for the price
 P=S0*pnorm((log(S0/c)+(rho+(sigma^2)/2)*t)/(sigma*sqrt(t)))-(c*exp(-rho*t))*pnorm((log(S0/c)+(rho-(sigma^2)/2)*t)/(sigma*sqrt(t)))
-plot(t[-1], P[-1],  type="l",xlab="Time (t)", ylab="Price (P)", main="Option price over time.")
+
+fig1 = data.frame(P, t)
+
+plot1 = ggplot(data = fig1, aes(P,t))+geom_line()
+plot1 + ggtitle("Option price (P) over time (t).") +
+  xlab("Time (t)") + ylab("Option price (P_t)")
+
 ```
 
 <p style="text-align: center;"> 
@@ -81,7 +89,7 @@ We plot the price <img src="https://render.githubusercontent.com/render/math?mat
 
 <br>
 
-```{r FIGURE 2, include=TRUE, echo=FALSE, fig.align='center'}
+```{r FIGURE 2, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
 
 #Set t=10
 t10=10
@@ -98,7 +106,7 @@ Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?
 
 <br>
 
-```{r FIGURE 3, include=TRUE, echo=FALSE, fig.align='center'}
+```{r FIGURE 3, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
 
 rho2=seq(0, 0.8, by=0.005) #Create a vector of different rho values
 
@@ -112,7 +120,7 @@ Figure 3 - ECO price <img src="https://render.githubusercontent.com/render/math?
 
 <br>
 
-```{r FIGURE 4, include=TRUE, echo=FALSE, fig.align='center'}
+```{r FIGURE 4, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
 c3=seq(0,5, by=0.01)
 
 P3=S0*pnorm((log(S0/c3)+(rho+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c3*exp(-rho*t10))*pnorm((log(S0/c3)+(rho-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
@@ -186,7 +194,7 @@ We simulate the OU process <img src="https://render.githubusercontent.com/render
 
 <br>
 
-```{r FIGURE 5, include=TRUE, echo=FALSE, fig.align='center'}
+```{r FIGURE 5, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
 ##Define the OU function
 rOU=function(n,N,Delta,theta,sigma){ 
   times=(0:n)*Delta ##vector of t_0,t_1,..,t_n 
@@ -252,5 +260,19 @@ The expressions for the mean and variance of this process are given by:
 <br>
 
 We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.
+
+```{r FIGURES 5 AND 6, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="90%"}
+
+par(mfrow=c(1,2))
+expRt=exp(-theta*OU$times)*R0+(1-exp(-theta*OU$times))*mu
+plot(OU$times, expRt, type="l" , ylab="E[R_s]", xlab="Time (s)", main="E[R_s] over time")
+
+varRt=(sigma^2/(2*theta))*(1-exp(-2*theta*OU$times))
+plot(OU$times, varRt, type="l" ,ylab="Var(R_s)", xlab="Time (s)", main="Var[R_s] over time")
+
+
+```
+
+
 
 
