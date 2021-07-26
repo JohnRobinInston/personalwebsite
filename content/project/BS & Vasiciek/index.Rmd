@@ -354,18 +354,48 @@ The expressions for the mean and variance of this process are given by:
 
 We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.
 
-```{r FIGURES 5 AND 6, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="90%"}
+```{r FIGURE5, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="90%"}
 
-par(mfrow=c(1,2))
 expRt=exp(-theta*OU$times)*R0+(1-exp(-theta*OU$times))*mu
-plot(OU$times, expRt, type="l" , ylab="E[R_s]", xlab="Time (s)", main="E[R_s] over time")
 
-varRt=(sigma^2/(2*theta))*(1-exp(-2*theta*OU$times))
-plot(OU$times, varRt, type="l" ,ylab="Var(R_s)", xlab="Time (s)", main="Var[R_s] over time")
-
+# Produce our figure
+fig5 = data.frame(OU$times, expRt)
+plot5 = ggplot(data = fig5, aes(OU$times,expRt))+geom_line()
+plot5 + ggtitle("Expected value (E[Rs]) over time.") +
+  xlab("Time (s)") + ylab("Expected value (E[Rs])")
 
 ```
 
+<p style="text-align: center;"> 
+Figure 6 - Expected value <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
 
+<br>
 
+```{r FIGURE6, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="90%"}
+
+varRt=(sigma^2/(2*theta))*(1-exp(-2*theta*OU$times))
+
+# Produce our figure
+fig6 = data.frame(OU$times, varRt)
+plot6 = ggplot(data = fig6, aes(OU$times,varRt))+geom_line()
+plot6 + ggtitle("Variance (V[Rs]) over time.") +
+  xlab("Time (s)") + ylab("Expected value (V[Rs])")
+
+```
+
+<p style="text-align: center;"> 
+Figure 7 - Variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
+
+<br>
+
+From Figures 6 and 7 we evauate what the mean and variance tend to as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">, for which we obtain the following expressions:
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large \lim_{(s\rightarrow\infty)}\{E[R_s]\}=\mu\hspace{.5cm}\text{and}\hspace{.5cm}\lim_{(s\rightarrow\infty)}\{V[R_s]\}\frac{\sigma^2}{2\theta}."></p>
+
+<br>
+
+We can see from Figure 6 that the expectation 
 
