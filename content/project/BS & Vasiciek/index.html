@@ -203,5 +203,21 @@ Figure 7 - Variance <img src="https://render.githubusercontent.com/render/math?m
 <img src="https://render.githubusercontent.com/render/math?math=\Large \lim_{(s\rightarrow\infty)}\{E[R_s]\}=\mu\hspace{.5cm}\text{and}\hspace{.5cm}\lim_{(s\rightarrow\infty)}\{V[R_s]\}\frac{\sigma^2}{2\theta}.">
 </p>
 <p><br></p>
-<p>We can see from Figure 6 that the expectation</p>
+<p>We can see from Figure 6 that the expectation is tending towards the long-term mean <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05"> as expected. We can also see from Figure 7 that the variance is tending towards 0.04, which is as expected per our expression for the limit of <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">.</p>
+<p><br></p>
+<p>If we change the value of <img src="https://render.githubusercontent.com/render/math?math=R_0"> we will change the starting point of the process. If we change the value of <img src="https://render.githubusercontent.com/render/math?math=\mu"> we change the value which the expectation of the process will tend towards. If we increase the value of the reversion parameter <img src="https://render.githubusercontent.com/render/math?math=\theta"> only, we will decrease the value that the variance of the process will tend towards. Similarly, if we increase the value of the volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> only, we will increase the value that the variance of the process will tend towards.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+</div>
+<div id="the-vasicek-model" class="section level2">
+<h2>4. The Vasicek Model</h2>
+<p>The Vasicek model defines the price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> as:</p>
+<p style="text-align: center;">
+<img src="https://render.githubusercontent.com/render/math?math=\Large Q_t=\exp(-\int_0^t R_sds)">
+</p>
+<p>where <img src="https://render.githubusercontent.com/render/math?math=R_s "> is the OU process defined in Section 3.</p>
+<p><br></p>
+<p>We plot 10 simulations of the bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1 ">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5 ">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05 "> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02 "> - shown in Figure 8 below.</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>

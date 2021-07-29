@@ -397,5 +397,54 @@ From Figures 6 and 7 we evauate what the mean and variance tend to as <img src="
 
 <br>
 
-We can see from Figure 6 that the expectation 
+We can see from Figure 6 that the expectation is tending towards the long-term mean <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05"> as expected.  We can also see from Figure 7 that the variance is tending towards 0.04, which is as expected per our expression for the limit of <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">.
+
+<br>
+
+If we change the value of <img src="https://render.githubusercontent.com/render/math?math=R_0"> we will change the starting point of the process.  If we change the value of <img src="https://render.githubusercontent.com/render/math?math=\mu"> we change the value which the expectation of the process will tend towards.  If we increase the value of the reversion parameter <img src="https://render.githubusercontent.com/render/math?math=\theta"> only, we will decrease the value that the variance of the process will tend towards.  Similarly, if we increase the value of the volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> only, we will increase the value that the variance of the process will tend towards.
+
+<br>
+
+---
+
+<br>
+
+## 4. The Vasicek Model
+
+The Vasicek model defines the price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> as:
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large Q_t=\exp(-\int_0^t R_sds)"></p>
+
+where <img src="https://render.githubusercontent.com/render/math?math=R_s "> is the OU process defined in Section 3.
+
+<br>
+
+We plot 10 simulations of the bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1 ">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5 ">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05 "> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02 "> - shown in Figure 8 below.
+
+```{r , include=TRUE, echo=FALSE}
+##Calculating Q over 0<t<10
+
+#Matrix to store Q
+Q=matrix(0,nrow=N,ncol=n+1) 
+
+#Loop to generate values of Q
+for(i in 1:N){
+  Q[i,]=exp(-Delta*cumsum(Rt[,i]))
+}
+
+#Plot
+
+Q = data.frame(t(Q))
+df <- data.frame(x = seq_along(Q[,1]),Q)
+df <- melt(df, id.vars = "x")
+cols = 2:11
+ggplot(df, aes(x = x, y = value, color = variable)) +
+  geom_line()+ggtitle("Bond price Qt over time t.") +
+  xlab("Time (t)") + ylab("Bond Price (Qt)")+
+  guides(color = guide_legend(title = "Simulation"))+
+  scale_color_manual(values = cols)
+
+```
+
 
