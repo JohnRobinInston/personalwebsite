@@ -422,6 +422,8 @@ where <img src="https://render.githubusercontent.com/render/math?math=R_s "> is 
 
 We plot 10 simulations of the bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1 ">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5 ">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05 "> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02 "> - shown in Figure 8 below.
 
+<br>
+
 ```{r , include=TRUE, echo=FALSE}
 ##Calculating Q over 0<t<10
 
@@ -446,5 +448,11 @@ ggplot(df, aes(x = x, y = value, color = variable)) +
   scale_color_manual(values = cols)
 
 ```
+
+<p style="text-align: center;"> 
+Figure 8 - Bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
+
+<br>
+
 
 
