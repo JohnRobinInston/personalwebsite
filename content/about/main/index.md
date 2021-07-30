@@ -1,12 +1,14 @@
 ---
 ## Configure page content in wide column
-title: "Latest Updates and Plans" # leave blank to exclude
+title:  # leave blank to exclude
 number_featured: 1 # pulling from mainSections in config.toml
 use_featured: false # if false, use most recent by date
 number_categories: 3 # set to zero to exclude
 show_intro: true
 intro: |
-  I am currently working on my dissertation as past of my master's programme.  I am investigating the use of machine learning techniques - such as k-means clustering and self-organising maps - in predicting the survival capacity of mutual funds.
+  I am currently writing my dissertation and will
+  
+  working on my dissertation as past of my master's programme.  I am investigating the use of machine learning techniques - such as k-means clustering and self-organising maps - in predicting the survival capacity of mutual funds.
   
   My plans going forward are to continue to develop my skills as a quantitative analysts.  I aim to continue my research into the applications of machine learning techniques in investment management by pursuing PhD study in North America.
   
