@@ -197,6 +197,7 @@ Figure 5 - Spot rate <img src="https://render.githubusercontent.com/render/math?
 </p>
 <p><br></p>
 <p>We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.</p>
+<p><br></p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/FIGURE6-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
 Figure 6 - Expected value <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.
@@ -204,10 +205,10 @@ Figure 6 - Expected value <img src="https://render.githubusercontent.com/render/
 <p><br></p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/figure7-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
-Figure 6 - Variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.
+Figure 7 - Variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.
 </p>
 <p><br></p>
-<p>From Figures 6 and 7 we evauate what the mean and variance tend to as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">, for which we obtain the following expressions:</p>
+<p>From Figures 6 and 7 we evaluate what the mean and variance tend to as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">, for which we obtain the following expressions:</p>
 <p><br></p>
 <p style="text-align: center;">
 <img src="https://render.githubusercontent.com/render/math?math=\Large \lim_{(s\rightarrow\infty)}\{E[R_s]\}=\mu\hspace{.5cm}\text{and}\hspace{.5cm}\lim_{(s\rightarrow\infty)}\{V[R_s]\}\frac{\sigma^2}{2\theta}.">
@@ -230,7 +231,7 @@ Figure 6 - Variance <img src="https://render.githubusercontent.com/render/math?m
 <p><br></p>
 <p>We plot 10 simulations of the bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1 ">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5 ">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05 "> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02 "> - shown in Figure 8 below.</p>
 <p><br></p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/figure8-1.png" width="75%" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/figure8-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
 Figure 8 - Bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.
 </p>
@@ -239,14 +240,14 @@ Figure 8 - Bond price <img src="https://render.githubusercontent.com/render/math
 <p><br></p>
 <p>We can check the distribution of <img src="https://render.githubusercontent.com/render/math?math=Q_t "> for the fixed value of <img src="https://render.githubusercontent.com/render/math?math=t=0 "> by simulating 1000 realisations of <img src="https://render.githubusercontent.com/render/math?math=\log(1_{10}) "> and approximating their empirical distribution using a histogram - shown in Figure 9 below. From this histogram we can see that the distribution of <img src="https://render.githubusercontent.com/render/math?math=\log(Q_{t}) "> appears to show the characteristic bell curve shape we would expect.</p>
 <p><br></p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/figure%2010-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
 Figure 9 - Histogram of empirical distribution of bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t">.
 </p>
 <p><br></p>
 <p>We can evidence this further by using a Q-Q plot to compare the empirical distribution we have simulated with the normal distribution - shown in Figure 10 below. From this plot we see clear evidence that the distribution is normal due to the linearity of the points generated.</p>
 <p><br></p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/figure11-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
 Figure 10 - Normal Q-Q plot of <img src="https://render.githubusercontent.com/render/math?math=Q_t"> distribution.
 </p>

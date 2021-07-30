@@ -393,6 +393,8 @@ The expressions for the mean and variance of this process are given by:
 
 We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.
 
+<br>
+
 ```{r figure6, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="75%"}
 
 ## Plot the Expectation and Variance
@@ -427,11 +429,11 @@ plot8
 ```
 
 <p style="text-align: center;"> 
-Figure 6 - Variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
+Figure 7 - Variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
 
 <br>
 
-From Figures 6 and 7 we evauate what the mean and variance tend to as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">, for which we obtain the following expressions:
+From Figures 6 and 7 we evaluate what the mean and variance tend to as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">, for which we obtain the following expressions:
 
 <br>
 
@@ -467,7 +469,7 @@ We plot 10 simulations of the bond price <img src="https://render.githubusercont
 
 <br>
 
-```{r figure8, include=TRUE, echo=FALSE, out.width="75%"}
+```{r figure8, include=TRUE, echo=FALSE, out.width="75%", fig.align='center'}
 ## Section 4: Vasicek Model -----------------
 
 # Matrix to store Q
@@ -504,7 +506,7 @@ We can check the distribution of <img src="https://render.githubusercontent.com/
 
 <br>
 
-```{r, include=TRUE, echo=FALSE}
+```{r figure 10, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
 
 ## Distribution of Qt
 
@@ -542,7 +544,7 @@ We can evidence this further by using a Q-Q plot to compare the empirical distri
 
 <br>
 
-```{r, include=TRUE, echo=FALSE}
+```{r figure11, include=TRUE, echo=FALSE, out.width="75%", fig.align='center'}
 
 plot11 = ggplot(fig10, aes(sample=Q))+stat_qq()
 
