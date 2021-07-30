@@ -10,16 +10,22 @@ date: "2020-11-30"
 excerpt: In this project I implement the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively.  
 output:   
   html_document
-layout: single-sidebar
-header-includes:
-    - \usepackage{setspace}\onehalfspacing
----
+layout: single
+links:
+- icon: github
+  icon_pack: fab
+  name: code
+  url: https://github.com/JohnRobinInston/project1_BSVasicek
 
-![](featured-hex.png)
+---
 
 ### Abstract
 
 In this project we investigate the properties of financial stochastic processes.  We first consider the implementation of the Black-Scholes model for determining the price of European call options on stock before then utlising the Vasicek model to calculate the future price of bonds.  We discuss the background, benefits and drawbacks of both models before conducting our investigation and summarising our findings.
+
+<br>
+
+![](featured-hex.png)
 
 <br>
 
