@@ -86,7 +86,7 @@ plot1
 ```
 
 <p style="text-align: center;"> 
-Figure 1 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
+Figure 1 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
 
 <details>
 <summary>R code for Figure 1.</summary>
@@ -147,7 +147,7 @@ P1=S0*pnorm((log(S0/c)+(rho+(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))-(c*exp(-rho*t
 # Produce plot for figure 2
 fig2 = data.frame(P1, sigma1)
 plot2 = ggplot(data = fig2, aes(sigma1,P1))+geom_line() + 
-  ggtitle("Option price at time t=10 for various volatility levels.") +
+  ggtitle("Option price at time t=10 for increasing volatility.") +
   xlab("Volatility (sigma)") + ylab("Option Price (P) at t=10.")
 
 plot2
@@ -155,7 +155,7 @@ plot2
 ```
 
 <p style="text-align: center;"> 
-Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.</p>
+Figure 2 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma">.</p>
 
 <br>
 
@@ -179,7 +179,7 @@ plot3
 ```
 
 <p style="text-align: center;"> 
-Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.</p>
+Figure 3 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho">.</p>
 
 <br>
 
@@ -204,7 +204,7 @@ plot4
 ```
 
 <p style="text-align: center;"> 
-Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.</p>
+Figure 4 - Ooption price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing strike price <img src="https://render.githubusercontent.com/render/math?math=c">.</p>
 
 <br>
 
@@ -305,7 +305,7 @@ We simulate the OU process <img src="https://render.githubusercontent.com/render
 
 <br>
 
-```{r figure5, include=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
+```{r figure5, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
 
 ## Section 3: OU Process -----------------
 
@@ -341,12 +341,11 @@ fig5 = melt(fig5, id.vars = "x")
 cols = 2:11
 plot5 = ggplot(fig5, aes(x = x, y = value, color = variable)) +
   geom_line()+ggtitle("OU process realisations over time.") +
-  xlab("Time (t)") + ylab("OU process (X)")+
+  xlab("Time (s)") + ylab("OU process (X)")+
   guides(color = guide_legend(title = "Simulation"))+
   scale_color_manual(values = cols)
 
-
-# Define transformation conditions
+ # Define transformation conditions
 R0=0.1
 mu=0.05
 
@@ -358,19 +357,18 @@ for(i in 1:N){
 }
 
 # Produce plot for Figure 6
+
 tR = data.frame(t(R))
 fig6 <- data.frame(x = seq_along(tR[, 1]), tR)
 fig6 <- melt(fig6, id.vars = "x")
 cols = 2:11
 plot6 = ggplot(fig6, aes(x = x, y = value, color = variable)) +
-  geom_line()+ggtitle("Spot rate simulations over time.") +
-  xlab("Time (s)") + ylab("Spot Rate (R_s)")+
+  geom_line()+ggtitle("Spot rate OU process realisations over time.") +
+  xlab("Time (t)") + ylab("Spot Rate (R)")+
   guides(color = guide_legend(title = "Simulation"))+
-  scale_color_discrete(labels = paste("S", 1:10))+
   scale_color_manual(values = cols)
-  
-# Combining figures 5 and 6
-grid.arrange(plot5, plot6, ncol=2)
+
+plot6
 
 ```
 
@@ -395,7 +393,7 @@ The expressions for the mean and variance of this process are given by:
 
 We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.
 
-```{r figure6, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="90%"}
+```{r figure6, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="75%"}
 
 ## Plot the Expectation and Variance
 
@@ -406,6 +404,17 @@ plot7 = ggplot(data = fig7, aes(OU.times,expRt))+geom_line() +
   ggtitle("OU process expected value over time.") +
   xlab("Time") + ylab("Expectated Value")
 
+plot7
+
+```
+
+<p style="text-align: center;"> 
+Figure 6 - Expected value <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
+
+<br>
+
+```{r figure7, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="75%"}
+
 varRt=(sigma^2/(2*theta))*(1-exp(-2*theta*OU$times))
 
 fig8 = data.frame(varRt, OU$times)
@@ -413,13 +422,12 @@ plot8 = ggplot(data = fig8, aes(OU.times, varRt))+geom_line() +
   ggtitle("OU process variance over time.") +
   xlab("Time") + ylab("Variance")
 
-# Combine figures 7 and 8
-grid.arrange(plot7, plot8, ncol=2)
+plot8
 
 ```
 
 <p style="text-align: center;"> 
-Figure 6 - Expected value <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
+Figure 6 - Variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
 
 <br>
 
@@ -459,7 +467,7 @@ We plot 10 simulations of the bond price <img src="https://render.githubusercont
 
 <br>
 
-```{r figure7, include=TRUE, echo=FALSE}
+```{r figure8, include=TRUE, echo=FALSE, out.width="75%"}
 ## Section 4: Vasicek Model -----------------
 
 # Matrix to store Q
@@ -492,11 +500,9 @@ We expect the distribution of <img src="https://render.githubusercontent.com/ren
 
 <br>
 
-We can check the distribution of <img src="https://render.githubusercontent.com/render/math?math=Q_t "> for the fixed value of <img src="https://render.githubusercontent.com/render/math?math=t=0 "> by simulating 1000 realisations of <img src="https://render.githubusercontent.com/render/math?math=\log(1_{10}) "> and approximating their empirical distribution using a histogram - shown in Figure 9 below.  From this histogram we can see that the distribution of <img src="https://render.githubusercontent.com/render/math?math=\log(1_{10}) "> appears to show the characteristic bell curve shape we would expect.
+We can check the distribution of <img src="https://render.githubusercontent.com/render/math?math=Q_t "> for the fixed value of <img src="https://render.githubusercontent.com/render/math?math=t=0 "> by simulating 1000 realisations of <img src="https://render.githubusercontent.com/render/math?math=\log(1_{10}) "> and approximating their empirical distribution using a histogram - shown in Figure 9 below.  From this histogram we can see that the distribution of <img src="https://render.githubusercontent.com/render/math?math=\log(Q_{t}) "> appears to show the characteristic bell curve shape we would expect.
 
 <br>
-
-We can evidence this further by using a Q-Q plot to compare the empirical distribution we have simulated with the normal distribution - shown in Figure 10 below.  From this plot we see clear evidence that the distribution is normal due to the linearity of the points generated.
 
 ```{r, include=TRUE, echo=FALSE}
 
@@ -523,11 +529,59 @@ plot10 = ggplot(data = fig10, aes(x=Q))+ geom_histogram(bins=30)+
   ggtitle("Histogram of log(Q)") +
   xlab("log(Q)") + ylab("Frequency")
 
-plot11 = ggplot(fig10, aes(sample=Q))+stat_qq()
-
-grid.arrange(plot7, plot8, ncol=2)
+plot10
 
 ```
 
+<p style="text-align: center;"> 
+Figure 9 - Histogram of empirical distribution of bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t">.</p>
 
+<br>
+
+We can evidence this further by using a Q-Q plot to compare the empirical distribution we have simulated with the normal distribution - shown in Figure 10 below.  From this plot we see clear evidence that the distribution is normal due to the linearity of the points generated.
+
+<br>
+
+```{r, include=TRUE, echo=FALSE}
+
+plot11 = ggplot(fig10, aes(sample=Q))+stat_qq()
+
+plot11
+
+```
+
+<p style="text-align: center;"> 
+Figure 10 - Normal Q-Q plot of <img src="https://render.githubusercontent.com/render/math?math=Q_t"> distribution.</p>
+
+<br>
+
+---
+
+## 5. Conclusion
+
+
+Both models discussed in this project come with several limitations. Firstly, the Black- Scholes model assumes that an option can only be exercised at expiration which limits its use to European options (as US options can be exercised before expiration). The model also makes assumptions that do not tend to hold in real world applications such as that no dividends are paid out during the life of the option, that markets are efficient, that there are no transaction costs in buying the option, that the risk-free rate and volatility of the underlying assets are known and constant and that the returns on the underlying assets are known and constant.\vspace{.4cm}
+
+
+The main disadvantage of the Vasicek model that has come to light since the global financial crisis is that the model does not allow for interest rates to dip below zero and become negative. This issue has been fixed in several models that have been developed since the Vasicek model such as the exponential Vasicek model and the Cox-Ingersoll-Ross model for estimating interest rate changes and further investigation into these models would be a useful topic of further research.
+
+<br>
+
+---
+
+## References
+
+1. Burgess, N. (2014). An overview of the vasicek short rate model. University of Oxford, Said Business School.
+
+2. F. Black, M. S. (1973). The pricing of options and corporate liabilities. Journal of Political Economy.
+
+3. Hayes, A. (2019). Investopedia - vasicek interest rate model.
+
+4. Hull, J. C. (2003). Options, Futures and Other Derivatives. Number ISBN 0-13-009056-5. Upper Saddle River, NJ: Prentice Hall.
+
+5. Kenton, W. (2020). Investopedia - black scholes model.
+
+6. Seth, S. (2019). Investopedia - circumventing the limitations of black-scholes.
+
+7. Vasicek, O. (1977). An equilibrium characterisation of the term structure. Journal of Fi- nancial Economics, 5:177–188.
 

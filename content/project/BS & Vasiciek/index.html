@@ -49,7 +49,7 @@ header-includes:
 <p><br></p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/figure1-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
-Figure 1 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.
+Figure 1 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.
 </p>
 <details>
 <summary>
@@ -87,17 +87,17 @@ plot1</code></pre>
 <p><br></p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/figure2-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
-Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.
+Figure 2 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma">.
 </p>
 <p><br></p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/figure3-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
-Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.
+Figure 3 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho">.
 </p>
 <p><br></p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/figure4-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
-Figure 2 - ECO price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for various volatility levels <img src="https://render.githubusercontent.com/render/math?math=\sigma">.
+Figure 4 - Ooption price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing strike price <img src="https://render.githubusercontent.com/render/math?math=c">.
 </p>
 <p><br></p>
 <details>
@@ -181,9 +181,7 @@ grid.arrange(plot2, plot3, plot4, ncol=3)
 <p><br></p>
 <p>We simulate the OU process <img src="https://render.githubusercontent.com/render/math?math=\{R_s:0\leq s\leq 10\}"> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05"> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02"> and produce a plot of our results. These are shown below in Figure 5.</p>
 <p><br></p>
-<pre><code>## Scale for &#39;colour&#39; is already present. Adding another scale for &#39;colour&#39;,
-## which will replace the existing scale.</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/FIGURE5-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/FIGURE5-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
 Figure 5 - Spot rate <img src="https://render.githubusercontent.com/render/math?math=\{R_s:0\leq s\leq 10\}"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.
 </p>
@@ -199,9 +197,14 @@ Figure 5 - Spot rate <img src="https://render.githubusercontent.com/render/math?
 </p>
 <p><br></p>
 <p>We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.</p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/FIGURE6-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/FIGURE6-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p style="text-align: center;">
 Figure 6 - Expected value <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.
+</p>
+<p><br></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/figure7-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p style="text-align: center;">
+Figure 6 - Variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.
 </p>
 <p><br></p>
 <p>From Figures 6 and 7 we evauate what the mean and variance tend to as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">, for which we obtain the following expressions:</p>
@@ -227,15 +230,45 @@ Figure 6 - Expected value <img src="https://render.githubusercontent.com/render/
 <p><br></p>
 <p>We plot 10 simulations of the bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1 ">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5 ">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05 "> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02 "> - shown in Figure 8 below.</p>
 <p><br></p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/figure7-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/figure8-1.png" width="75%" /></p>
 <p style="text-align: center;">
 Figure 8 - Bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.
 </p>
 <p><br></p>
 <p>We expect the distribution of <img src="https://render.githubusercontent.com/render/math?math=Q_t "> to be log-normal as the integral <img src="https://render.githubusercontent.com/render/math?math=\int_0^t R_s "> is normal - as it is a linear combination of normal random variables.</p>
 <p><br></p>
-<p>We can check the distribution of <img src="https://render.githubusercontent.com/render/math?math=Q_t "> for the fixed value of <img src="https://render.githubusercontent.com/render/math?math=t=0 "> by simulating 1000 realisations of <img src="https://render.githubusercontent.com/render/math?math=\log(1_{10}) "> and approximating their empirical distribution using a histogram - shown in Figure 9 below. From this histogram we can see that the distribution of <img src="https://render.githubusercontent.com/render/math?math=\log(1_{10}) "> appears to show the characteristic bell curve shape we would expect.</p>
+<p>We can check the distribution of <img src="https://render.githubusercontent.com/render/math?math=Q_t "> for the fixed value of <img src="https://render.githubusercontent.com/render/math?math=t=0 "> by simulating 1000 realisations of <img src="https://render.githubusercontent.com/render/math?math=\log(1_{10}) "> and approximating their empirical distribution using a histogram - shown in Figure 9 below. From this histogram we can see that the distribution of <img src="https://render.githubusercontent.com/render/math?math=\log(Q_{t}) "> appears to show the characteristic bell curve shape we would expect.</p>
+<p><br></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p style="text-align: center;">
+Figure 9 - Histogram of empirical distribution of bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t">.
+</p>
 <p><br></p>
 <p>We can evidence this further by using a Q-Q plot to compare the empirical distribution we have simulated with the normal distribution - shown in Figure 10 below. From this plot we see clear evidence that the distribution is normal due to the linearity of the points generated.</p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><br></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p style="text-align: center;">
+Figure 10 - Normal Q-Q plot of <img src="https://render.githubusercontent.com/render/math?math=Q_t"> distribution.
+</p>
+<p><br></p>
+<hr />
+</div>
+<div id="conclusion" class="section level2">
+<h2>5. Conclusion</h2>
+<p>Both models discussed in this project come with several limitations. Firstly, the Black- Scholes model assumes that an option can only be exercised at expiration which limits its use to European options (as US options can be exercised before expiration). The model also makes assumptions that do not tend to hold in real world applications such as that no dividends are paid out during the life of the option, that markets are efficient, that there are no transaction costs in buying the option, that the risk-free rate and volatility of the underlying assets are known and constant and that the returns on the underlying assets are known and constant.</p>
+<p>The main disadvantage of the Vasicek model that has come to light since the global financial crisis is that the model does not allow for interest rates to dip below zero and become negative. This issue has been fixed in several models that have been developed since the Vasicek model such as the exponential Vasicek model and the Cox-Ingersoll-Ross model for estimating interest rate changes and further investigation into these models would be a useful topic of further research.</p>
+<p><br></p>
+<hr />
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<ol style="list-style-type: decimal">
+<li><p>Burgess, N. (2014). An overview of the vasicek short rate model. University of Oxford, Said Business School.</p></li>
+<li><p>F. Black, M. S. (1973). The pricing of options and corporate liabilities. Journal of Political Economy.</p></li>
+<li><p>Hayes, A. (2019). Investopedia - vasicek interest rate model.</p></li>
+<li><p>Hull, J. C. (2003). Options, Futures and Other Derivatives. Number ISBN 0-13-009056-5. Upper Saddle River, NJ: Prentice Hall.</p></li>
+<li><p>Kenton, W. (2020). Investopedia - black scholes model.</p></li>
+<li><p>Seth, S. (2019). Investopedia - circumventing the limitations of black-scholes.</p></li>
+<li><p>Vasicek, O. (1977). An equilibrium characterisation of the term structure. Journal of Fi- nancial Economics, 5:177–188.</p></li>
+</ol>
 </div>
