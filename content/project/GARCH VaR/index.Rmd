@@ -1,0 +1,568 @@
+---
+title: "Calculating VaR of FTSE100 time series data using GARCH models."
+subtitle: "A project using Generalised Autoregressive Conditional Heteroscedasticity (GARCH) models to calculate Value-at-Risk (VaR) of FTSE100 time series data."
+categories:
+- Quantitative Analysis
+- Stochastic Processes
+- Financial Mathematics
+author: "John Inston"
+date: "2020-11-30"
+excerpt: In this project I use Generalised Autoregressive Conditional Heteroscedasticity (GARCH) models to calculate Value-at-Risk (VaR) of FTSE100 time series data. 
+output:   
+  html_document
+layout: single
+links:
+- icon: github
+  icon_pack: fab
+  name: code
+  url: https://github.com/JohnRobinInston/project1_BSVasicek
+
+---
+
+### Abstract
+
+In this project we shall investigate the use of GARCH models for calculating Value at Risk (VaR). Specifically we will fit a GARCH(1,1) model to a time-series data set of FTSE100 closing prices between 7 November 2002 and 6 October 2010 before comparing our results with previous results attained using other methods for calculating VaR. We will discuss the appropriateness of the GARCH model assumptions for our data setand look at fitting other GARCH models to attain improved VaR predictions. Finally, we will discuss our results in terms of the literature on modelling volatility using GARCH models.
+
+<br>
+
+![](featured-hex.png)
+
+<br>
+
+---
+
+<br>
+
+## 1.  Introduction
+
+<br>
+
+
+We aim to investigate the appropriateness of the GARCH model for modelling FTSE100 closing prices. We will fit the proposed model to the 1000 most recent log returns from the FTSE100 data set before evaluating whether the data is conditionally normal by performing a Q-Q plot. We will then be able to predict the Value at Risk for a period of 24 hours for £1000 invested in a FTSE Index Fund and then use cross-validation to evaluate this approach. In our discussion we will compare our result with previous workshop results as well as considering the appropriateness of the GARCH model assumptions for the FTSE100 data. We will conclude by looking to fit other GARCH models as well as considering our results in terms of the literature on modelling volatility using GARCH models.
+
+<br>
+
+---
+
+<br>
+
+## 2. Model Fitting
+
+```{r figure1, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
+
+# Set working directory
+setwd("~/Documents/Website/personalwebsite/content/project/GARCH VaR")
+
+# Import libraries
+library(rugarch)
+library(tseries)
+library(ggplot2)
+library(reshape)
+library(gridExtra)
+
+source("FTSE.R")
+FTSE=FTSE.close
+time = 1:length(FTSE)
+
+n=length(FTSE)
+X=log(FTSE[(n+1-1000):n]/FTSE[(n-1000):(n-1)])
+
+# Produce plot for figure 1
+fig1 = data.frame(time, FTSE)
+plot1 = ggplot(data = fig1, aes(time,FTSE))+geom_line(col=2) + 
+  ggtitle("FTSE100 Time Series Data from 07-11-2002 to 06-10-2010.") +
+  xlab("Time (t)") + ylab("Closing Price")
+plot1
+
+```
+
+<p style="text-align: center;"> 
+Figure 1 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
+
+<details>
+<summary>R code for Figure 1.</summary>
+<p>
+
+```{c#}
+library(ggplot2)
+library(reshape)
+library(tidyr)
+library(gridExtra)
+
+## 2.1 Price series plot
+
+# Define initial values
+S0 = 1 
+sigma = sqrt(0.02)
+rho = 0.03
+c = 1
+t = seq(0.001, 10, by=0.001)
+
+# Define price
+P = S0*pnorm((log(S0/c)+(rho+(sigma^2)/2)*t)/(sigma*sqrt(t)))-(c*exp(-rho*t))*pnorm((log(S0/c)+(rho-(sigma^2)/2)*t)/(sigma*sqrt(t)))
+
+# Produce plot for figure 1
+fig1 = data.frame(P, t)
+plot1 = ggplot(data = fig1, aes(t,P))+geom_line() + 
+  ggtitle("Option Price over time.") +
+  xlab("Time (t)") + ylab("Option Price (P)")
+plot1
+```
+
+</p>
+</details> 
+
+<br>
+
+We see that the price <img src="https://render.githubusercontent.com/render/math?math=P_t"> is increasing over time, which makes sense as the values of the ECO should be dependent on the time the underlying stock has to increase in value.  From Equation 1 we can see that <img src="https://render.githubusercontent.com/render/math?math=P_t\rightarrow S_0"> as <img src="https://render.githubusercontent.com/render/math?math=t\rightarrow\infty">.
+
+We plot the price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> as we vary each of <img src="https://render.githubusercontent.com/render/math?math=\sigma">, <img src="https://render.githubusercontent.com/render/math?math=\rho"> and <img src="https://render.githubusercontent.com/render/math?math=c"> in turn - shown in Figure 2, Figure 3 and Figure 4 respectively.
+
+<br>
+
+```{r figure2, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
+
+## 2.2 Investigation
+
+# Set t=10
+t10=10
+
+## 2.2.1 Varying volatility (sigma)
+
+# Define varying sigma 
+sigma1=seq(0,2, by=0.01)
+
+# Calculate new price series
+P1=S0*pnorm((log(S0/c)+(rho+(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))-(c*exp(-rho*t10))*pnorm((log(S0/c)+(rho-(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))
+
+# Produce plot for figure 2
+fig2 = data.frame(P1, sigma1)
+plot2 = ggplot(data = fig2, aes(sigma1,P1))+geom_line() + 
+  ggtitle("Option price at time t=10 for increasing volatility.") +
+  xlab("Volatility (sigma)") + ylab("Option Price (P) at t=10.")
+
+plot2
+
+```
+
+<p style="text-align: center;"> 
+Figure 2 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma">.</p>
+
+<br>
+
+```{r figure3, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
+
+## 2.2.2 Varying interest rate (rho)
+
+# Define varying rho
+rho2=seq(0, 0.8, by=0.005) 
+
+# Calculate new price series
+P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t10))*pnorm((log(S0/c)+(rho2-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
+
+# Produce plot for figure 3
+fig3 = data.frame(P2, rho2)
+plot3 = ggplot(data = fig3, aes(rho2,P2))+geom_line() + 
+  ggtitle("Option price at time t=10 for various interest rates.") +
+  xlab("Interest Rate (rho)") + ylab("Option Price (P) at t=10.")
+
+plot3 
+```
+
+<p style="text-align: center;"> 
+Figure 3 - Option price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho">.</p>
+
+<br>
+
+```{r figure4, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
+
+## 2.2.3 Varying strike price (c)
+
+# Define varying c
+c3=seq(0,5, by=0.01)
+
+# Calculate new price series
+P3=S0*pnorm((log(S0/c3)+(rho+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c3*exp(-rho*t10))*pnorm((log(S0/c3)+(rho-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
+
+# Produce plot for figure 4
+fig4 = data.frame(P3, c3)
+plot4 = ggplot(data = fig4, aes(c3,P3))+geom_line() + 
+  ggtitle("Option price at time t=10 for various strike prices.") +
+  xlab("Strike Price (c)") + ylab("Option price (P) at t=10.")
+
+plot4
+
+```
+
+<p style="text-align: center;"> 
+Figure 4 - Ooption price <img src="https://render.githubusercontent.com/render/math?math=P_{10}"> at time <img src="https://render.githubusercontent.com/render/math?math=t=10"> for increasing strike price <img src="https://render.githubusercontent.com/render/math?math=c">.</p>
+
+<br>
+
+<details>
+<summary>R code for Figures 2, 3 and 4.</summary>
+<p>
+
+```{c#}
+
+## 2.2 Investigation
+
+# Set t=10
+t10=10
+
+## 2.2.1 Varying volatility (sigma)
+
+# Define varying sigma 
+sigma1=seq(0,2, by=0.01)
+
+# Calculate new price series
+P1=S0*pnorm((log(S0/c)+(rho+(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))-(c*exp(-rho*t10))*pnorm((log(S0/c)+(rho-(sigma1^2)/2)*t10)/(sigma1*sqrt(t10)))
+
+# Produce plot for figure 2
+fig2 = data.frame(P1, sigma1)
+plot2 = ggplot(data = fig2, aes(sigma1,P1))+geom_line() + 
+  ggtitle("Option price at time t=10 for various volatility levels.") +
+  xlab("Volatility (sigma)") + ylab("Option Price (P) at t=10.")
+
+## 2.2.2 Varying interest rate (rho)
+
+# Define varying rho
+rho2=seq(0, 0.8, by=0.005) 
+
+# Calculate new price series
+P2=S0*pnorm((log(S0/c)+(rho2+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c*exp(-rho2*t10))*pnorm((log(S0/c)+(rho2-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
+
+# Produce plot for figure 3
+fig3 = data.frame(P2, rho2)
+plot3 = ggplot(data = fig3, aes(rho2,P2))+geom_line() + 
+  ggtitle("Option price at time t=10 for various interest rates.") +
+  xlab("Interest Rate (rho)") + ylab("Option Price (P) at t=10.")
+
+## 2.2.3 Varying strike price (c)
+
+# Define varying c
+c3=seq(0,5, by=0.01)
+
+# Calculate new price series
+P3=S0*pnorm((log(S0/c3)+(rho+(sigma^2)/2)*t10)/(sigma*sqrt(t10)))-(c3*exp(-rho*t10))*pnorm((log(S0/c3)+(rho-(sigma^2)/2)*t10)/(sigma*sqrt(t10)))
+
+# Produce plot for figure 4
+fig4 = data.frame(P3, c3)
+plot4 = ggplot(data = fig4, aes(c3,P3))+geom_line() + 
+  ggtitle("Option price at time t=10 for various strike prices.") +
+  xlab("Strike Price (c)") + ylab("Option price (P) at t=10.")
+
+# Combining figures 2, 3 and 4
+grid.arrange(plot2, plot3, plot4, ncol=3)
+
+```
+
+</p>
+</details> 
+
+<br>
+
+As both volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> and interest rates <img src="https://render.githubusercontent.com/render/math?math=\rho"> increase we see that <img src="https://render.githubusercontent.com/render/math?math=P_{10}\rightarrow S_0">.  This is because high underlying stock volatility and interest rates both increase the potential option return which increases the options value up to the initial price of the stock.  The option value is limited to this value because if the option price were to rise above the stock price then there would be no reason for investors to purchase the option rather than the stock.
+
+As the strike price <img src="https://render.githubusercontent.com/render/math?math=c"> increases we see that <img src="https://render.githubusercontent.com/render/math?math=P_{10}\rightarrow 0">.  This is because if the option has a high strike price it is less likely that the underlying stock will reach this price during the period of the option which makes the option less valuable.
+
+<br>
+
+---
+
+<br>
+
+## 3. Ornstein-Uhlenbeck Processes
+
+The spot-rate <img src="https://render.githubusercontent.com/render/math?math=\{R_s:s>0\}"> is an Ornstein-Uhlenbeck (OU) process - with initial spot rate <img src="https://render.githubusercontent.com/render/math?math=R_0">, long-term mean <img src="https://render.githubusercontent.com/render/math?math=\mu"> and reversion speed <img src="https://render.githubusercontent.com/render/math?math=\theta>0"> - which is given by Equation 2 below.
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large R_s=e^{-\theta s}R_0%2B(1-e^{-\theta s})\mu%2B X_s."></p>
+
+<br>
+
+Here, <img src="https://render.githubusercontent.com/render/math?math=X_s"> is an OU process with volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma>0"> and reversion parameter <img src="https://render.githubusercontent.com/render/math?math=\theta>0">. This is equivalent to stating the following.
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large E[X_s]=0 \hspace{.5cm}\text{and}\hspace{.5cm}Cov(X_s, X_t)=\frac{\sigma^2}{2\theta}e^{-\theta(s+t)}e^{2\theta\min(s, t)-1}."></p>
+
+<br>
+
+We simulate the OU process <img src="https://render.githubusercontent.com/render/math?math=\{R_s:0\leq s\leq 10\}"> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05"> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02"> and produce a plot of our results.  These are shown below in Figure 5.
+
+<br>
+
+```{r figure5, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
+
+## Section 3: OU Process -----------------
+
+## Define the OU function
+
+rOU=function(n,N,Delta,theta,sigma){ 
+  times=(0:n)*Delta ##vector of t_0,t_1,..,t_n 
+  X=matrix(0,nrow=N,ncol=n+1)
+  for(i in 1:n){
+    x=X[,i]#current value
+    m=x*exp(-theta*Delta) #mean of new value 
+    v=sigma^2*(1-exp(-2*theta*Delta))/(2*theta) ##variance of new value 
+    X[,i+1]=rnorm(N,m,sqrt(v)) ##simulate new value
+  }
+  return(list(X=X,times=times)) 
+}
+
+# Define initial conditions 
+
+n=10000
+N=10
+Delta=10/n
+theta=0.5
+sigma=0.02
+
+# Calculate 10 realisations of the OU process using our function
+OU=rOU(n, N, Delta, theta, sigma)
+
+# Produce plot for Figure 5
+tX = data.frame(t(OU$X))
+fig5 = data.frame(x=seq_along(tX[,1]), tX)
+fig5 = melt(fig5, id.vars = "x")
+cols = 2:11
+plot5 = ggplot(fig5, aes(x = x, y = value, color = variable)) +
+  geom_line()+ggtitle("OU process realisations over time.") +
+  xlab("Time (s)") + ylab("OU process (X)")+
+  guides(color = guide_legend(title = "Simulation"))+
+  scale_color_manual(values = cols)
+
+ # Define transformation conditions
+R0=0.1
+mu=0.05
+
+# Transform OU process
+
+R=matrix(0, nrow=N, ncol=n+1)
+for(i in 1:N){
+  R[i,]=exp(-theta*OU$times)*R0+(1-exp(-theta*OU$times))*mu+OU$X[i,]
+}
+
+# Produce plot for Figure 6
+
+tR = data.frame(t(R))
+fig6 <- data.frame(x = seq_along(tR[, 1]), tR)
+fig6 <- melt(fig6, id.vars = "x")
+cols = 2:11
+plot6 = ggplot(fig6, aes(x = x, y = value, color = variable)) +
+  geom_line()+ggtitle("Spot rate OU process realisations over time.") +
+  xlab("Time (t)") + ylab("Spot Rate (R)")+
+  guides(color = guide_legend(title = "Simulation"))+
+  scale_color_manual(values = cols)
+
+plot6
+
+```
+
+<p style="text-align: center;"> 
+Figure 5 - Spot rate <img src="https://render.githubusercontent.com/render/math?math=\{R_s:0\leq s\leq 10\}"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
+
+<br>
+
+The expressions for the mean and variance of this process are given by:
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large E[R_s]=e^{-\theta s}R_0+(1+e^{-\theta s})\mu,"></p>
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large V[R_s]=\frac{\sigma^2}{2\theta}(1-e^{-s\theta s})."></p>
+
+<br>
+
+We plot the mean <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> and variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> against time in Figures 6 and 7 below.
+
+<br>
+
+```{r figure6, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="75%"}
+
+## Plot the Expectation and Variance
+
+expRt=exp(-theta*OU$times)*R0+(1-exp(-theta*OU$times))*mu
+
+fig7 = data.frame(expRt, OU$times)
+plot7 = ggplot(data = fig7, aes(OU.times,expRt))+geom_line() + 
+  ggtitle("OU process expected value over time.") +
+  xlab("Time") + ylab("Expectated Value")
+
+plot7
+
+```
+
+<p style="text-align: center;"> 
+Figure 6 - Expected value <img src="https://render.githubusercontent.com/render/math?math=E[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
+
+<br>
+
+```{r figure7, include=TRUE, echo=FALSE, fig.align='center', fig.show='hold', out.width="75%"}
+
+varRt=(sigma^2/(2*theta))*(1-exp(-2*theta*OU$times))
+
+fig8 = data.frame(varRt, OU$times)
+plot8 = ggplot(data = fig8, aes(OU.times, varRt))+geom_line() + 
+  ggtitle("OU process variance over time.") +
+  xlab("Time") + ylab("Variance")
+
+plot8
+
+```
+
+<p style="text-align: center;"> 
+Figure 7 - Variance <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> over time <img src="https://render.githubusercontent.com/render/math?math=s">.</p>
+
+<br>
+
+From Figures 6 and 7 we evaluate what the mean and variance tend to as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">, for which we obtain the following expressions:
+
+<br>
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large \lim_{(s\rightarrow\infty)}\{E[R_s]\}=\mu\hspace{.5cm}\text{and}\hspace{.5cm}\lim_{(s\rightarrow\infty)}\{V[R_s]\}\frac{\sigma^2}{2\theta}."></p>
+
+<br>
+
+We can see from Figure 6 that the expectation is tending towards the long-term mean <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05"> as expected.  We can also see from Figure 7 that the variance is tending towards 0.04, which is as expected per our expression for the limit of <img src="https://render.githubusercontent.com/render/math?math=V[R_s]"> as <img src="https://render.githubusercontent.com/render/math?math=s\rightarrow\infty">.
+
+<br>
+
+If we change the value of <img src="https://render.githubusercontent.com/render/math?math=R_0"> we will change the starting point of the process.  If we change the value of <img src="https://render.githubusercontent.com/render/math?math=\mu"> we change the value which the expectation of the process will tend towards.  If we increase the value of the reversion parameter <img src="https://render.githubusercontent.com/render/math?math=\theta"> only, we will decrease the value that the variance of the process will tend towards.  Similarly, if we increase the value of the volatility <img src="https://render.githubusercontent.com/render/math?math=\sigma"> only, we will increase the value that the variance of the process will tend towards.
+
+<br>
+
+---
+
+<br>
+
+## 4. The Vasicek Model
+
+The Vasicek model defines the price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> as:
+
+<p style="text-align: center;"> 
+<img src="https://render.githubusercontent.com/render/math?math=\Large Q_t=\exp(-\int_0^t R_sds)"></p>
+
+where <img src="https://render.githubusercontent.com/render/math?math=R_s "> is the OU process defined in Section 3.
+
+<br>
+
+We plot 10 simulations of the bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t "> at time 0 of a bond paying one unit at time <img src="https://render.githubusercontent.com/render/math?math=t "> for <img src="https://render.githubusercontent.com/render/math?math=R_0=0.1 ">, <img src="https://render.githubusercontent.com/render/math?math=\theta=0.5 ">, <img src="https://render.githubusercontent.com/render/math?math=\mu=0.05 "> and <img src="https://render.githubusercontent.com/render/math?math=\sigma=0.02 "> - shown in Figure 8 below.
+
+<br>
+
+```{r figure8, include=TRUE, echo=FALSE, out.width="75%", fig.align='center'}
+## Section 4: Vasicek Model -----------------
+
+# Matrix to store Q
+Q=matrix(0,nrow=N,ncol=n+1) 
+
+# Loop to generate values of Q
+for(i in 1:N){
+  Q[i,]=exp(-Delta*cumsum(R[i,]))
+}
+
+# Plot bond price over time
+tQ = data.frame(t(Q))
+fig9 <- data.frame(x = seq_along(tQ[,1]),tQ)
+fig9 <- melt(fig9, id.vars = "x")
+cols = 2:11
+plot9 = ggplot(fig9, aes(x = x, y = value, color = variable)) +
+  geom_line()+ggtitle("Bond price Qt over time t.") +
+  xlab("Time (t)") + ylab("Bond Price (Qt)")+
+  guides(color = guide_legend(title = "Simulation"))+
+  scale_color_manual(values = cols)
+plot9
+```
+
+<p style="text-align: center;"> 
+Figure 8 - Bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t"> over time <img src="https://render.githubusercontent.com/render/math?math=t">.</p>
+
+<br>
+
+We expect the distribution of <img src="https://render.githubusercontent.com/render/math?math=Q_t "> to be log-normal as the integral <img src="https://render.githubusercontent.com/render/math?math=\int_0^t R_s "> is normal - as it is a linear combination of normal random variables.
+
+<br>
+
+We can check the distribution of <img src="https://render.githubusercontent.com/render/math?math=Q_t "> for the fixed value of <img src="https://render.githubusercontent.com/render/math?math=t=0 "> by simulating 1000 realisations of <img src="https://render.githubusercontent.com/render/math?math=\log(1_{10}) "> and approximating their empirical distribution using a histogram - shown in Figure 9 below.  From this histogram we can see that the distribution of <img src="https://render.githubusercontent.com/render/math?math=\log(Q_{t}) "> appears to show the characteristic bell curve shape we would expect.
+
+<br>
+
+```{r figure 10, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
+
+## Distribution of Qt
+
+#Simulate 1000 realisations of Rt at t=10 (n=1000, delta=10/n so t=n*delta=10)
+
+N1=1000
+OU1=rOU(n, N1, Delta, theta, sigma)
+
+R1=matrix(0, nrow=N1, ncol=n+1)
+
+for(i in 1:N1){
+  R1[i,]=exp(-theta*OU1$times)*R0+(1-exp(-theta*OU1$times))*mu+OU1$X[i,]
+}
+
+Q=rep(0, N1)
+for(i in 1:N1){
+  Q[i]=exp(-Delta*sum(R1[i, 2:(n+1)]))
+}
+
+fig10 = data.frame(Q, N1)
+plot10 = ggplot(data = fig10, aes(x=Q))+ geom_histogram(bins=30)+
+  ggtitle("Histogram of log(Q)") +
+  xlab("log(Q)") + ylab("Frequency")
+
+plot10
+
+```
+
+<p style="text-align: center;"> 
+Figure 9 - Histogram of empirical distribution of bond price <img src="https://render.githubusercontent.com/render/math?math=Q_t">.</p>
+
+<br>
+
+We can evidence this further by using a Q-Q plot to compare the empirical distribution we have simulated with the normal distribution - shown in Figure 10 below.  From this plot we see clear evidence that the distribution is normal due to the linearity of the points generated.
+
+<br>
+
+```{r figure11, include=TRUE, echo=FALSE, out.width="75%", fig.align='center'}
+
+plot11 = ggplot(fig10, aes(sample=Q))+stat_qq()
+
+plot11
+
+```
+
+<p style="text-align: center;"> 
+Figure 10 - Normal Q-Q plot of <img src="https://render.githubusercontent.com/render/math?math=Q_t"> distribution.</p>
+
+<br>
+
+---
+
+## 5. Conclusion
+
+
+Both models discussed in this project come with several limitations. Firstly, the Black- Scholes model assumes that an option can only be exercised at expiration which limits its use to European options (as US options can be exercised before expiration). The model also makes assumptions that do not tend to hold in real world applications such as that no dividends are paid out during the life of the option, that markets are efficient, that there are no transaction costs in buying the option, that the risk-free rate and volatility of the underlying assets are known and constant and that the returns on the underlying assets are known and constant.\vspace{.4cm}
+
+
+The main disadvantage of the Vasicek model that has come to light since the global financial crisis is that the model does not allow for interest rates to dip below zero and become negative. This issue has been fixed in several models that have been developed since the Vasicek model such as the exponential Vasicek model and the Cox-Ingersoll-Ross model for estimating interest rate changes and further investigation into these models would be a useful topic of further research.
+
+<br>
+
+---
+
+## References
+
+
+
