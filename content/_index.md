@@ -3,17 +3,19 @@ action_label: Read More &rarr;
 action_link: /about
 action_type: text
 description: 
-  Hello - <br>
+  <span style="color:#4682B4; font-size:1.5em;"> **Hello -** </span> 
+  
   <br>
-  I am a quantitative analyst, applied mathematician and data scientist from the United Kingdom.  I am currently studying towards my masters degree in Quantitative Finance at Lancaster University. <br>
   <br>
-  On this site you will find a library of everything I make, write or feel compelled to share on the internet that is related to maths, finance or data science.
+  I'm John.  I am a <span style="color:#4682B4;"> **quantitative analyst** </span>, <span style="color:#4682B4;"> **applied mathematician** </span> and <span style="color:#4682B4;"> **data scientist** </span> from the UK.  I am currently studying towards my masters degree in quantitative finance at Lancaster University. <br>
+  <br>
+  On this site you can find information about my academic and professional background, a library of my project work and a collection of my articles / blog posts about topics in finance and science.
 image_left: true
 images:
 - img/ProfilePic.png
 show_action_link: true
 show_social_links: true
-subtitle: Postgraduate Student - Lancaster University
+subtitle: MSc Quantitative Finance Student - Lancaster University
 text_align_left: true
 title: John Robin Inston
 type: home
