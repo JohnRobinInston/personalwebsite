@@ -5,7 +5,7 @@ categories:
 - Stochastic Processes
 - Financial Mathematics
 date: "2020-11-30"
-draft: false
+draft: true
 excerpt: This theme has a form-to-email feature built in, thanks to the simple Formspree
   integration. All you need to activate the form is a valid recipient email address
   saved in the form front matter.
