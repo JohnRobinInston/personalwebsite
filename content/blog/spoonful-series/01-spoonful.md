@@ -5,23 +5,14 @@ excerpt: Grid is the very first CSS module created specifically to solve the lay
   problems we’ve all been hacking our way around for as long as we’ve been making
   websites.
 subtitle: ""
-title: A first post
+title: Statistics
 weight: 1
 ---
 
 {{< here >}}
 
 
-## does this work?
+## What is Statistics?
 
-### or this?
+Statistics is the process of collecting, analysing and making inferences from a sample of data.  The aim of a statistician is to model an independent variable using dependent variables using a parametric statistical model, where the parameters are determined so that the model best fits the data sample.
 
----
-
-Let's start.
-
-## beginning
-
-## middle
-
-## end
