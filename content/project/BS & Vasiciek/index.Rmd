@@ -1,18 +1,17 @@
 ---
 title: "Implementing Black Scholes & Vasiciek Models."
 subtitle: "A project implementing the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively."
-excerpt: "In this project I implement the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively. "
-date: 2020-11-30
-author: "John Robin Inston"
-draft: false
-featured: true
-images:
-series:
-tags:
 categories:
-  - Quantitative Analysis
-  - Stochastic Processes
-  - Financial Mathematics
+- Quantitative Analysis
+- Stochastic Processes
+- Financial Mathematics
+author: "John Inston"
+date: "2020-11-30"
+featured: true
+draft: false
+excerpt: In this project I implement the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively.  
+output:   
+  html_document
 layout: single
 links:
 - icon: github
@@ -593,5 +592,4 @@ The main disadvantage of the Vasicek model that has come to light since the glob
 6. Seth, S. (2019). Investopedia - circumventing the limitations of black-scholes.
 
 7. Vasicek, O. (1977). An equilibrium characterisation of the term structure. Journal of Fi- nancial Economics, 5:177–188.
-
 
