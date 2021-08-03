@@ -17,8 +17,73 @@ Statistics is the process of **collecting**, **analysing** and making **inferenc
 
 ## Statistical Models
 
-A parametric statistical model for a data set consists of a probability distribution with unknown parameters.  Here a probability distribution is simply a mathematical function that gives the probability of occurrence of different possible outcomes of an experiment.  
+A parametric statistical model for a data set consists of a **probability distribution** with unknown parameters.  Here a probability distribution is simply a mathematical function that gives the probability of occurrence of different possible outcomes of an experiment.  
 
-Let $x_1, ..., x_n$ be a data sample from a population.  A simple statistical model for this data assumes that the data can be modelled as realisations of independent and identically distributed (IID) random variables $X_1, ..., X_n$.
+## Independent and Identically Distributed
 
+Let <img src="https://render.githubusercontent.com/render/math?math=x_1, ..., x_n"> be a data sample from a population.  A simple statistical model for this data assumes that the data can be modelled as realisations of **independent** and **identically distributed** (IID) random variables <img src="https://render.githubusercontent.com/render/math?math=X_1, ..., X_n">.
+
+- **Independent** - 
+
+  Knowing the random variable <img src="https://render.githubusercontent.com/render/math?math=X_i=x_i"> has no impact on the probabilities of the possible outcomes for all remaining variables.
+
+- **Identically Distributed** - 
+
+  Each of the random variables <img src="https://render.githubusercontent.com/render/math?math=X_1, ..., X_n"> have the same probability distribution with cumulative distribution function <img src="https://render.githubusercontent.com/render/math?math=F">.
+
+### Example
+
+We consider the historical daily closing price of Apple stock during the period from 01-01-2017 to 01-03-2018.  We import the time series data from Yahoo Finance and produce a plot.
+
+```{r, include=FALSE, echo=FALSE}
+
+## Import libraries
+library(tidyquant)
+library(quantmod)
+library(tseries)
+library(ggplot2)
+library(gridExtra)
+
+```
+
+```{r, include=TRUE, echo=TRUE}
+
+## Import apple stock price data
+options("getSymbols.warning4.0"=FALSE)
+options("getSymbols.yahoo.warning"=FALSE)
+
+# Downloading Apple price using quantmod
+apple = getSymbols("AAPL", from = "2017-01-01",
+           to = "2018-03-01",warnings = FALSE,
+           auto.assign = FALSE)
+
+# Define our dataset
+data = as.numeric(apple$AAPL.Close)
+time = 1:length(data)
+plot1data = data.frame(time, data)
+plot1 = ggplot(plot1data, aes(x = time, y = data)) +
+  geom_line()+ggtitle("Apple stock daily closing price from 2017-01-01 to 2018-03-01.") +
+  xlab("Time (days)") + ylab("Apple Stock Closing Price (Pt)")
+plot1
+```
+
+
+
+```{r, include=FALSE, echo=TRUE}
+logdata = ts(diff(log(data)))
+time = 1:length(logdata)
+
+plot1data = data.frame(time, logdata)
+
+plot1 = ggplot(plot1data, aes(x = time, y = logdata)) +
+  geom_line()+ggtitle("Apple stock log returns from 2017-01-01 to 2018-03-01.") +
+  xlab("Time (days)") + ylab("Apple Stock Closing Price (Pt)")
+plot1
+
+plot2 = ggplot(plot1data, aes(y = logdata)) + geom_histogram(bins=30) +
+  ggtitle("Histogram of log(Q)") +
+  xlab("log(Q)") + ylab("Frequency")
+plot2
+grid.arrange(plot1, plot2, ncol=2)
+```
 

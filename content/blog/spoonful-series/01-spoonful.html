@@ -19,6 +19,37 @@ weight: 1
 </div>
 <div id="statistical-models" class="section level2">
 <h2>Statistical Models</h2>
-<p>A parametric statistical model for a data set consists of a probability distribution with unknown parameters. Here a probability distribution is simply a mathematical function that gives the probability of occurrence of different possible outcomes of an experiment.</p>
-<p>Let <span class="math inline">\(x_1, ..., x_n\)</span> be a data sample from a population. A simple statistical model for this data assumes that the data can be modelled as realisations of independent and identically distributed (IID) random variables <span class="math inline">\(X_1, ..., X_n\)</span>.</p>
+<p>A parametric statistical model for a data set consists of a <strong>probability distribution</strong> with unknown parameters. Here a probability distribution is simply a mathematical function that gives the probability of occurrence of different possible outcomes of an experiment.</p>
+</div>
+<div id="independent-and-identically-distributed" class="section level2">
+<h2>Independent and Identically Distributed</h2>
+<p>Let <img src="https://render.githubusercontent.com/render/math?math=x_1, ..., x_n"> be a data sample from a population. A simple statistical model for this data assumes that the data can be modelled as realisations of <strong>independent</strong> and <strong>identically distributed</strong> (IID) random variables <img src="https://render.githubusercontent.com/render/math?math=X_1, ..., X_n">.</p>
+<ul>
+<li><p><strong>Independent</strong> -</p>
+<p>Knowing the random variable <img src="https://render.githubusercontent.com/render/math?math=X_i=x_i"> has no impact on the probabilities of the possible outcomes for all remaining variables.</p></li>
+<li><p><strong>Identically Distributed</strong> -</p>
+<p>Each of the random variables <img src="https://render.githubusercontent.com/render/math?math=X_1, ..., X_n"> have the same probability distribution with cumulative distribution function <img src="https://render.githubusercontent.com/render/math?math=F">.</p></li>
+</ul>
+<div id="example" class="section level3">
+<h3>Example</h3>
+<p>We consider the historical daily closing price of Apple stock during the period from 01-01-2017 to 01-03-2018. We import the time series data from Yahoo Finance and produce a plot.</p>
+<pre class="r"><code>## Import apple stock price data
+options(&quot;getSymbols.warning4.0&quot;=FALSE)
+options(&quot;getSymbols.yahoo.warning&quot;=FALSE)
+
+# Downloading Apple price using quantmod
+apple = getSymbols(&quot;AAPL&quot;, from = &quot;2017-01-01&quot;,
+           to = &quot;2018-03-01&quot;,warnings = FALSE,
+           auto.assign = FALSE)
+
+# Define our dataset
+data = as.numeric(apple$AAPL.Close)
+time = 1:length(data)
+plot1data = data.frame(time, data)
+plot1 = ggplot(plot1data, aes(x = time, y = data)) +
+  geom_line()+ggtitle(&quot;Apple stock daily closing price from 2017-01-01 to 2018-03-01.&quot;) +
+  xlab(&quot;Time (days)&quot;) + ylab(&quot;Apple Stock Closing Price (Pt)&quot;)
+plot1</code></pre>
+<p><img src="/blog/spoonful-series/01-spoonful_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
 </div>
