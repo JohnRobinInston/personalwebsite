@@ -18,7 +18,6 @@ links:
   icon_pack: fab
   name: code
   url: https://github.com/JohnRobinInston/project1_BSVasicek
-
 ---
 
 ### Abstract
