@@ -33,23 +33,6 @@ weight: 1
 <div id="example" class="section level3">
 <h3>Example</h3>
 <p>We consider the historical daily closing price of Apple stock during the period from 01-01-2017 to 01-03-2018. We import the time series data from Yahoo Finance and produce a plot.</p>
-<pre class="r"><code>## Import apple stock price data
-options(&quot;getSymbols.warning4.0&quot;=FALSE)
-options(&quot;getSymbols.yahoo.warning&quot;=FALSE)
-
-# Downloading Apple price using quantmod
-apple = getSymbols(&quot;AAPL&quot;, from = &quot;2017-01-01&quot;,
-           to = &quot;2018-03-01&quot;,warnings = FALSE,
-           auto.assign = FALSE)
-
-# Define our dataset
-data = as.numeric(apple$AAPL.Close)
-time = 1:length(data)
-plot1data = data.frame(time, data)
-plot1 = ggplot(plot1data, aes(x = time, y = data)) +
-  geom_line()+ggtitle(&quot;Apple stock daily closing price from 2017-01-01 to 2018-03-01.&quot;) +
-  xlab(&quot;Time (days)&quot;) + ylab(&quot;Apple Stock Closing Price (Pt)&quot;)
-plot1</code></pre>
 <p><img src="/blog/spoonful-series/01-spoonful_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 </div>

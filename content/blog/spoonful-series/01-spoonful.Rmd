@@ -46,7 +46,7 @@ library(gridExtra)
 
 ```
 
-```{r, include=TRUE, echo=TRUE}
+```{r, include=TRUE, echo=FALSE}
 
 ## Import apple stock price data
 options("getSymbols.warning4.0"=FALSE)
@@ -69,7 +69,7 @@ plot1
 
 
 
-```{r, include=FALSE, echo=TRUE}
+```{r, include=FALSE, echo=FALSE}
 logdata = ts(diff(log(data)))
 time = 1:length(logdata)
 
