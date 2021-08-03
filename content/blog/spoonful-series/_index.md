@@ -25,7 +25,7 @@ show_post_thumbnail: false
 sidebar:
   author: Alison Hill
   description: |
-    A series of articles I have written about stochastic processes.
+    A series of blog posts I have written about statistics.
   show_sidebar_adunit: false
   text_link_label: ""
   text_link_url: ""
