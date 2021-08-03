@@ -4,7 +4,7 @@ subtitle: "A project implementing the Black-Scholes and Vasiciek models to deter
 excerpt: "In this project I implement the Black-Scholes and Vasiciek models to determine the prices of call options and bonds respectively. "
 date: 2020-11-30
 author: "John Robin Inston"
-draft: true
+draft: false
 images:
 series:
 tags:
