@@ -1,0 +1,24 @@
+---
+date: "2021-01-01"
+draft: false
+excerpt: Grid is the very first CSS module created specifically to solve the layout
+  problems we’ve all been hacking our way around for as long as we’ve been making
+  websites.
+subtitle: ""
+title: Statistics - The Basics
+weight: 1
+---
+
+*“There are three types of lies -- lies, damn lies, and statistics.”* ― Benjamin Disraeli
+
+## What is Statistics?
+
+Statistics is the process of **collecting**, **analysing** and making **inferences** from a sample of data using a parametric statistical models.  Statisticians - individuals who use statistics - attempt to draw reliable conclusions about large groups and data sets from the observable characteristics of small samples that represent only a small portion of the total population.  They do this by fitting statistical models to the sample data set and using it to estimate characteristics of the population from which the data was sampled.
+
+## Statistical Models
+
+A parametric statistical model for a data set consists of a probability distribution with unknown parameters.  Here a probability distribution is simply a mathematical function that gives the probability of occurrence of different possible outcomes of an experiment.  
+
+Let $x_1, ..., x_n$ be a data sample from a population.  A simple statistical model for this data assumes that the data can be modelled as realisations of independent and identically distributed (IID) random variables $X_1, ..., X_n$.
+
+
