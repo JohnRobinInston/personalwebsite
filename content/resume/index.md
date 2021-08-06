@@ -1,34 +1,10 @@
 ---
 author: Eric Anderson
-categories:
-- Theme Features
-- R
-- package
 date: "2019-07-03"
 draft: false
-excerpt: Building this static site generator theme was the first time I used an Atomic
-  (or Functional) CSS system like Tachyons. It’s a design system that provides very
-  small (which means fast) CSS modules that you can use in your HTML.
-layout: single-sidebar
-tags:
-- hugo-site
+excerpt: A summary of my academic qualifications, employment history, skills and achievements.
+layout: single
 title: Resume
-sidebar:
-    title: Resume Sidebar
-    author: Alison Hill
-    description: "Sometimes you want a souped-up series- a bundle of related pages
-      \nmeant to be read in sequence. This section is like a blog series, \nminus
-      the blog.\n"
-    show_author_byline: true
-    show_post_date: true
-    show_sidebar_adunit: true
-    text_contents_label: On this page
-    text_link_label: ""
-    text_link_url: ""
-    text_series_label: Outline
-    title: Create a Collection
-
----
 
 ---
 

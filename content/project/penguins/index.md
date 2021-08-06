@@ -11,7 +11,7 @@ excerpt: Grid is the very first CSS module created specifically to solve the lay
   websites.
 featured: false
 layout: single-sidebar
-draft: true
+draft: false
 links:
 - icon: door-open
   icon_pack: fas
