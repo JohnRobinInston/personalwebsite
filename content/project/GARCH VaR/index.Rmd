@@ -1,0 +1,97 @@
+---
+title: "Calculating VaR of FTSE100 time series data using GARCH models."
+subtitle: "A project using Generalised Autoregressive Conditional Heteroscedasticity (GARCH) models to calculate Value-at-Risk (VaR) of FTSE100 time series data."
+categories:
+- Quantitative Analysis
+- Stochastic Processes
+- Financial Mathematics
+author: "John Inston"
+date: "2020-11-30"
+featured: TRUE
+excerpt: In this project I use Generalised Autoregressive Conditional Heteroscedasticity (GARCH) models to calculate Value-at-Risk (VaR) of FTSE100 time series data. 
+output:   
+  html_document
+layout: single
+mathjax: true
+links:
+- icon: github
+  icon_pack: fab
+  name: code
+  url: https://github.com/JohnRobinInston/project1_BSVasicek
+
+---
+
+### Abstract
+
+In this project we shall investigate the use of GARCH models for calculating Value at Risk (VaR). Specifically we will fit a GARCH(1,1) model to a time-series data set of FTSE100 closing prices between 7 November 2002 and 6 October 2010 before comparing our results with previous results attained using other methods for calculating VaR. We will discuss the appropriateness of the GARCH model assumptions for our data setand look at fitting other GARCH models to attain improved VaR predictions. Finally, we will discuss our results in terms of the literature on modelling volatility using GARCH models.
+
+<br>
+
+![](featured-hex.png)
+
+<br>
+
+---
+
+<br>
+
+## 1.  Introduction
+
+<br>
+
+
+We aim to investigate the appropriateness of the GARCH model for modelling FTSE100 closing prices. We will fit the proposed model to the 1000 most recent log returns from the FTSE100 data set before evaluating whether the data is conditionally normal by performing a Q-Q plot. We will then be able to predict the Value at Risk for a period of 24 hours for £1000 invested in a FTSE Index Fund and then use cross-validation to evaluate this approach. In our discussion we will compare our result with previous workshop results as well as considering the appropriateness of the GARCH model assumptions for the FTSE100 data. We will conclude by looking to fit other GARCH models as well as considering our results in terms of the literature on modelling volatility using GARCH models.
+
+<br>
+
+---
+
+<br>
+
+## 2. Model Fitting
+
+```{r setup, include=FALSE, echo=FALSE}
+# Set working directory
+setwd("~/Documents/Website/personalwebsite/content/project/GARCH VaR")
+
+# Import libraries
+library(rugarch)
+library(tseries)
+library(ggplot2)
+library(reshape)
+library(gridExtra)
+
+source("FTSE.R")
+```
+
+<br>
+
+We consider a data set containing the daily returns from the FTSE100 from 7 November 2002 to 6 October 2010 - shown in Figure 1 below. 
+
+<br>
+
+```{r figure1, include=TRUE, echo=FALSE, fig.align='center', out.width="75%"}
+
+FTSE=FTSE.close
+time = 1:length(FTSE)
+
+n=length(FTSE)
+X=log(FTSE[(n+1-1000):n]/FTSE[(n-1000):(n-1)])
+
+# Produce plot for figure 1
+fig1 = data.frame(time, FTSE)
+plot1 = ggplot(data = fig1, aes(time,FTSE))+geom_line(col=2) + 
+  ggtitle("FTSE100 Time Series Data from 07-11-2002 to 06-10-2010.") +
+  xlab("Time (t)") + ylab("Closing Price")
+plot1
+
+```
+
+<p style="text-align: center;"> 
+Figure 1 - FTSE100 closing prices from November 7th, 2002 to October 6th 2010.</p>
+
+We fit the following model to the 1000 most recent log returns from the FTSE100 data set:
+
+
+
+
