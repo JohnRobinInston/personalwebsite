@@ -10,10 +10,13 @@ series:
 tags:
 categories:
 layout: single
+mathjax: true
 ---
 
 
 ## Air quality
+
+\\[4x^2+5y\\]
 
 
 ```r

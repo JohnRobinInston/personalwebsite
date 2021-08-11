@@ -4,6 +4,7 @@ date: "2019-07-03"
 draft: false
 excerpt: A summary of my academic qualifications, employment history, skills and achievements.
 layout: single
+
 title: Resume
 
 ---
