@@ -34,7 +34,7 @@ enableEmoji = true
   favicon = "/img/favicon.ico"
   logo = "/img/blogophonic-mark-dark.png"
   mainSections = ["project", "blog", "talk"]
-  navallcaps = true
+  navallcaps = false
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]
   socialInHeader = false
@@ -44,6 +44,7 @@ enableEmoji = true
   sharing_image = "/img/papillons.jpg"
   # Twitter username (without @). Used when a visitor shares your site on Twitter.
   twitter = "apreshill"
+  day_night: true
   
   # use a built-in color theme
   # one of: forest / grayscale / peach / plum /
